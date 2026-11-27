@@ -1,0 +1,2198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assessoria de investimentos com plano escrito | Tessitura</title>
+  <meta name="description" content="Para profissionais liberais e empresários com patrimônio aplicado em mais de um lugar. Você recebe um plano escrito logo na primeira conversa.">
+  <meta name="theme-color" content="#0E0F11">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Assessoria de investimentos com plano escrito | Tessitura">
+  <meta property="og:description" content="Para profissionais liberais e empresários com patrimônio aplicado em mais de um lugar. Você recebe um plano escrito logo na primeira conversa.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Tessitura Investimentos",
+        "description": "Assessoria de investimentos para profissionais liberais e empresários com patrimônio aplicado em mais de um lugar.",
+        "url": "[PREENCHER: URL do site]",
+        "telephone": "[PREENCHER: telefone]",
+        "email": "[PREENCHER: e-mail]"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Já tenho gerente no banco. Faz sentido falar com vocês?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. A assessoria olha o conjunto do seu patrimônio, sem substituir o gerente. A análise começa pelo seu plano." } },
+          { "@type": "Question", "name": "Meu dinheiro fica com a assessoria?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Não gerimos nem custodiamos recursos. Os investimentos continuam em seu nome na instituição." } },
+          { "@type": "Question", "name": "O diagnóstico tem custo?", "acceptedAnswer": { "@type": "Answer", "text": "Não. A conversa inicial é gratuita e não tem compromisso." } },
+          { "@type": "Question", "name": "Vocês recomendam produtos logo no primeiro contato?", "acceptedAnswer": { "@type": "Answer", "text": "Não. O diagnóstico começa pelos objetivos e prazos. Recomendações só depois de um plano por escrito." } },
+          { "@type": "Question", "name": "Tenho pouco tempo. Como funciona o acompanhamento?", "acceptedAnswer": { "@type": "Answer", "text": "A conversa inicial é curta, e as revisões são periódicas. Você escolhe presencial na capital ou por vídeo." } },
+          { "@type": "Question", "name": "Vocês atendem fora da capital?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, por vídeo, em qualquer lugar. O atendimento presencial é na capital." } },
+          { "@type": "Question", "name": "Quanto tempo leva para começar?", "acceptedAnswer": { "@type": "Answer", "text": "Depois do diagnóstico, o plano por escrito é entregue em [PREENCHER: prazo de entrega do plano]." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <style>
+    /* ═════════════════════════════════════════════════════════
+       FONTES: HELVETICA BOLD (Headlines) & POPPINS (Textos Menores)
+       ═════════════════════════════════════════════════════════ */
+    @font-face {
+      font-family: 'Helvetica Bold';
+      src: url('assets/fonts/Helvetica-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Base & Surfaces */
+      --fx-bg-canvas:        #050C06;
+      --fx-bg-page:          #0E0F11;
+      --fx-bg-card:          #141518;
+      --fx-bg-card-hover:    #181A1D;
+      --fx-bg-elevated:      #1C1E22;
+      --fx-bg-input:         #121316;
+      --fx-bg-pill:          #1A1C20;
+      --fx-bg-active:        #25272B;
+
+      /* Borders */
+      --fx-border-subtle:    rgba(255, 255, 255, 0.06);
+      --fx-border-medium:    rgba(255, 255, 255, 0.10);
+      --fx-border-strong:    rgba(255, 255, 255, 0.18);
+      --fx-border-accent:    rgba(85, 230, 126, 0.35);
+
+      /* Text */
+      --fx-text-primary:     #FFFFFF;
+      --fx-text-secondary:   #8E9299;
+      --fx-text-muted:       #9CA3AF;
+      --fx-text-tertiary:    #60646C;
+      --fx-text-inverse:     #0E0F11;
+
+      /* Neon Mint Accent */
+      --fx-accent:           #55E67E;
+      --fx-accent-light:     #86EFAC;
+      --fx-accent-glow:      #22C55E;
+      --fx-accent-mint:      #B8F5CE;
+
+      /* Radius */
+      --fx-radius-xs:    6px;
+      --fx-radius-sm:    8px;
+      --fx-radius-btn:   10px;
+      --fx-radius-card:  14px;
+      --fx-radius-panel: 16px;
+      --fx-radius-banner:18px;
+      --fx-radius-pill:  9999px;
+
+      /* Glows & shadows */
+      --fx-glow-accent: 0 0 24px rgba(85, 230, 126, 0.22);
+      --fx-shadow-card: 0 12px 32px rgba(0, 0, 0, 0.45);
+
+      /* Typography */
+      --font-headline:       'Helvetica Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-body:           'Poppins', sans-serif;
+      --font-mono:           'JetBrains Mono', monospace;
+
+      --container: 1140px;
+      --header-h: 56px;
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--fx-bg-page);
+      color: var(--fx-text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    svg { display: block; max-width: 100%; }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--fx-accent);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       TOPNAV COM STATUS "ONLINE AGORA"
+       ═════════════════════════════════════════════════════════ */
+    .topnav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background: rgba(14, 15, 17, 0.85);
+      border-bottom: 1px solid var(--fx-border-subtle);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      z-index: 99;
+    }
+
+    .topnav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .topnav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      color: var(--fx-text-primary);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .fx-logo-box {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, #7CF89B 0%, #2EC964 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0E0F11;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: -0.5px;
+      box-shadow: 0 0 12px rgba(85, 230, 126, 0.35);
+      flex-shrink: 0;
+    }
+
+    .topnav-logo .muted { color: var(--fx-text-secondary); font-weight: 400; font-family: var(--font-body); }
+
+    .status-online-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--fx-bg-pill);
+      border: 1px solid var(--fx-border-medium);
+      border-radius: var(--fx-radius-pill);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--fx-text-primary);
+      letter-spacing: -0.01em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .dot-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--fx-accent);
+      box-shadow: 0 0 10px var(--fx-accent);
+      animation: pulseGlow 2s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       BOTÕES: VERDE COM DEGRADÊ / BRANCO COM SOMBRA VERDE (SEM SETAS)
+       ═════════════════════════════════════════════════════════ */
+    .btn-fx-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      padding: 0 32px;
+      background: linear-gradient(135deg, #7CF89B 0%, #2EC964 100%);
+      color: #0E0F11;
+      border: none;
+      border-radius: var(--fx-radius-btn);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(85, 230, 126, 0.40);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-fx-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(85, 230, 126, 0.60);
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      padding: 0 32px;
+      background: #FFFFFF;
+      color: #0E0F11;
+      border: none;
+      border-radius: var(--fx-radius-btn);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(85, 230, 126, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(85, 230, 126, 0.55);
+    }
+
+    .btn-fx-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      padding: 0 28px;
+      background: rgba(20, 21, 24, 0.85);
+      color: #FFFFFF;
+      border: 1px solid var(--fx-border-strong);
+      border-radius: var(--fx-radius-btn);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-fx-secondary:hover {
+      border-color: var(--fx-accent);
+      color: var(--fx-accent);
+      background: rgba(85, 230, 126, 0.06);
+      transform: translateY(-1px);
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       PADRÃO DE TRIÂNGULOS NO FUNDO (EM VEZ DE QUADRADOS)
+       ═════════════════════════════════════════════════════════ */
+    main { position: relative; z-index: 1; }
+
+    .fold {
+      position: relative;
+      padding: 92px 0;
+      border-bottom: none;
+      overflow: visible;
+    }
+
+    .grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52' viewBox='0 0 60 52'%3E%3Cpath d='M0 0 L30 52 L60 0 Z M30 0 L0 52 L60 52 Z' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 60px 52px;
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, transparent 80%);
+              mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, transparent 80%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Luz ambiente que se estende suavemente entre as dobras sem nenhum corte */
+    .glow-back {
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(85, 230, 126, 0.12) 0%, rgba(85, 230, 126, 0.02) 45%, transparent 70%);
+      pointer-events: none;
+      filter: blur(24px);
+      z-index: 0;
+    }
+
+    /* TÍTULOS: HELVETICA BOLD COM GRADIENTE BRANCO-MENTA (SEM BUG NA LETRA G) */
+    .grad-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      background: linear-gradient(180deg, #FFFFFF 30%, var(--fx-accent-mint) 100%);
+      -webkit-background-clip: text;
+              background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      text-wrap: balance;
+      padding-bottom: 0.14em; /* Respiro essencial para não cortar a perna da letra 'g' */
+      display: inline-block;
+    }
+
+    .br-desktop { display: inline; }
+    .br-mobile  { display: none; }
+
+    .u-nowrap-hero,
+    .u-nowrap-d2,
+    .u-nowrap-d3 {
+      white-space: nowrap;
+    }
+
+    @media (min-width: 640px) {
+      .u-nowrap { white-space: nowrap; }
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       DOBRA 1 — HERO COM MACBOOK VISÍVEL À DIREITA E DEGRADÊ ESCURO + TRIÂNGULOS À ESQUERDA
+       ═════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      padding: calc(var(--header-h) + 64px) 0 100px;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      background-color: var(--fx-bg-page);
+      background-image:
+        linear-gradient(180deg, transparent 65%, rgba(14, 15, 17, 0.82) 84%, #0E0F11 96%, #0E0F11 100%),
+        linear-gradient(90deg, #0E0F11 0%, rgba(14, 15, 17, 0.96) 38%, rgba(14, 15, 17, 0.65) 58%, rgba(14, 15, 17, 0.12) 78%, rgba(14, 15, 17, 0.25) 100%),
+        radial-gradient(ellipse at 82% 45%, rgba(85, 230, 126, 0.22) 0%, transparent 55%),
+        url('assets/hero-laptop.jpg');
+      background-size: cover;
+      background-position: right 40%;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+
+    .hero .grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52' viewBox='0 0 60 52'%3E%3Cpath d='M0 0 L30 52 L60 0 Z M30 0 L0 52 L60 52 Z' fill='none' stroke='rgba(255,255,255,0.045)' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 60px 52px;
+      -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 42%, rgba(0,0,0,0.15) 68%, transparent 80%);
+              mask-image: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 42%, rgba(0,0,0,0.15) 68%, transparent 80%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.85rem, 3.4vw, 2.625rem);
+      line-height: 1.18;
+      margin-bottom: 22px;
+    }
+
+    .hero-sub {
+      font-size: 1.0625rem;
+      line-height: 1.68;
+      color: var(--fx-text-muted);
+      margin-bottom: 36px;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       DOBRA 2 — O PROBLEMA (IMAGEM GRANDE À ESQUERDA, TEXTO À DIREITA JUSTIFICADO)
+       ═════════════════════════════════════════════════════════ */
+    .problem {
+      position: relative;
+    }
+
+    .problem .glow-back-top { top: -260px; left: 12%; }
+    .problem .glow-back-bottom { bottom: -260px; right: 10%; }
+
+    .problem h2,
+    .method h2,
+    .steps h2,
+    .audience h2,
+    .faq h2 {
+      font-size: clamp(2rem, 4.8vw, 3.125rem);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 960px) {
+      .problem-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 50px;
+      }
+    }
+
+    .problem-media {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .problem-media .coins-stage {
+      position: relative;
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    /* Brilho circular suave atrás das moedas (sem nenhum formato ou corte quadrado) */
+    .problem-media .coins-stage::before {
+      content: '';
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(85, 230, 126, 0.20) 0%, rgba(85, 230, 126, 0.05) 45%, transparent 70%);
+      pointer-events: none;
+      filter: blur(28px);
+      z-index: 1;
+    }
+
+    .problem-media .coins-image-wrap {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: visible;
+    }
+
+    .problem-media .coins-image-wrap img {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 28px rgba(85, 230, 126, 0.35));
+      position: relative;
+      z-index: 2;
+    }
+
+    .problem-content {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .problem-content .grad-title {
+      text-align: left;
+      display: inline-block;
+      margin: 0;
+      line-height: 1.18;
+      padding-bottom: 0.14em;
+    }
+
+    .problem-copy {
+      max-width: 520px;
+      margin-top: 24px;
+      text-align: left;
+    }
+
+    .problem-copy p {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--fx-text-secondary);
+      text-align: left;
+      margin: 0;
+    }
+    .problem-copy p + p { margin-top: 20px; }
+
+    .problem-copy .mark {
+      color: var(--fx-text-primary);
+      font-weight: 500;
+    }
+
+    .coin-flash {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(28px);
+      z-index: 1;
+      opacity: 0.65;
+    }
+
+    .flash-1 {
+      top: 25%;
+      left: 8%;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(85, 230, 126, 0.45) 0%, transparent 70%);
+      animation: floatLight 4s infinite alternate ease-in-out;
+    }
+
+    .flash-2 {
+      top: 15%;
+      right: 6%;
+      width: 190px;
+      height: 190px;
+      background: radial-gradient(circle, rgba(134, 239, 172, 0.4) 0%, transparent 70%);
+      animation: floatLight 5s infinite alternate-reverse ease-in-out;
+    }
+
+    .flash-3 {
+      bottom: 18%;
+      left: 20%;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.35) 0%, transparent 70%);
+      animation: floatLight 3.5s infinite alternate ease-in-out;
+    }
+
+    @keyframes floatLight {
+      0% { transform: scale(0.9) translateY(0); opacity: 0.5; }
+      100% { transform: scale(1.15) translateY(-12px); opacity: 0.85; }
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       DOBRA 3 — COMO TRABALHAMOS
+       ═════════════════════════════════════════════════════════ */
+    .method .glow-back-bottom { bottom: -260px; left: 15%; }
+
+    .method-grid {
+      display: grid;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .pillars { display: grid; gap: 16px; }
+
+    .fx-feature-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      padding: 24px;
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+
+    .fx-feature-card:hover {
+      border-color: var(--fx-border-medium);
+      transform: translateY(-2px);
+      box-shadow: var(--fx-shadow-card);
+    }
+
+    .fx-feature-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(85, 230, 126, 0.1);
+      border: 1px solid var(--fx-border-accent);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--fx-accent);
+    }
+
+    .fx-feature-title {
+      font-size: 1rem;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      color: var(--fx-text-primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .fx-feature-text {
+      font-size: 0.875rem;
+      color: var(--fx-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       DOBRA 4 — O MÉTODO (MAPA ESPAÇADO LATERALMENTE E COM DECLIVE SUAVE)
+       ═════════════════════════════════════════════════════════ */
+    .steps {
+      text-align: center;
+    }
+
+    .steps .grad-title {
+      margin: 0 auto;
+      max-width: 860px;
+    }
+
+    .steps .glow-back-bottom { bottom: -260px; right: 15%; }
+
+    .path-wrap-open {
+      position: relative;
+      margin-top: 64px;
+      width: 100%;
+      min-height: 520px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .path-sky {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .path-stars {
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px; height: 2px;
+      border-radius: 50%;
+      background: transparent;
+      box-shadow:
+        42px 36px 0 0 rgba(255,255,255,.45), 118px 210px 0 0 rgba(255,255,255,.32),
+        230px 70px 0 0 rgba(255,255,255,.4),  310px 330px 0 0 rgba(255,255,255,.35),
+        420px 120px 0 0 rgba(255,255,255,.3), 520px 40px 0 0 rgba(255,255,255,.45),
+        610px 260px 0 0 rgba(255,255,255,.35), 700px 90px 0 0 rgba(255,255,255,.4),
+        780px 360px 0 0 rgba(255,255,255,.3), 860px 150px 0 0 rgba(255,255,255,.4),
+        940px 60px 0 0 rgba(255,255,255,.45), 980px 300px 0 0 rgba(255,255,255,.32),
+        70px 420px 0 0 rgba(255,255,255,.35), 480px 460px 0 0 rgba(255,255,255,.32),
+        1050px 220px 0 0 rgba(255,255,255,.4);
+    }
+
+    .path-svg { display: none; }
+
+    /* Mobile: linha vertical */
+    .path {
+      list-style: none;
+      position: relative;
+      display: grid;
+      gap: 40px;
+      padding: 40px 24px 40px 60px;
+      text-align: left;
+    }
+
+    .path-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: -31px; top: 12px;
+      width: 1px;
+      height: 0;
+      background: rgba(255, 255, 255, 0.28);
+      transition: height 0.8s ease-in-out;
+    }
+
+    .path-step.step-visible:not(:last-child)::after {
+      height: calc(100% + 40px);
+    }
+
+    .path-step { position: relative; }
+
+    .path-node {
+      position: absolute;
+      left: -36px; top: 6px;
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 5px rgba(85, 230, 126, 0.25), 0 0 20px rgba(85, 230, 126, 0.85);
+    }
+
+    .path-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--fx-accent);
+      margin-bottom: 6px;
+    }
+
+    .path-title {
+      font-size: 1.15rem;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--fx-text-primary);
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .path-desc {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--fx-text-secondary);
+    }
+
+    @media (min-width: 960px) {
+      .path-svg {
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .path-svg .line {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.35);
+        stroke-width: 1.2;
+        transition: stroke-dashoffset 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .path {
+        display: block;
+        height: 520px;
+        padding: 0;
+        position: relative;
+      }
+      .path-step:not(:last-child)::after { display: none; }
+
+      .path-step {
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        width: 0; height: 0;
+      }
+
+      .path-node {
+        left: -7px;
+        top: -7px;
+        width: 14px;
+        height: 14px;
+      }
+
+      .path-text {
+        position: absolute;
+        left: 50%;
+        width: 260px;
+        transform: translateX(-50%);
+        text-align: center;
+      }
+
+      /* Linhas mais declinadas e espaçadas suavemente */
+      .path-step.is-low  .path-text { top: 24px; }
+      .path-step.is-high .path-text { bottom: 24px; }
+
+      .path-start {
+        position: absolute;
+        left: 2%; top: 44%;
+        width: 7px; height: 7px;
+        margin: -3.5px 0 0 -3.5px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       DOBRA 5 — PARA QUEM É (TEXTOS TOTALMENTE CENTRALIZADOS)
+       ═════════════════════════════════════════════════════════ */
+    .audience {
+      text-align: center;
+    }
+
+    .audience .grad-title {
+      margin: 0 auto;
+      max-width: 860px;
+    }
+
+    .audience .glow-back-bottom { bottom: -260px; right: 10%; }
+
+    .fit-grid {
+      display: grid;
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .fit-card {
+      position: relative;
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-panel);
+      padding: 36px 30px;
+      text-align: center;
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+
+    .fit-card:hover {
+      border-color: var(--fx-border-medium);
+      transform: translateY(-2px);
+      box-shadow: var(--fx-shadow-card);
+    }
+
+    .fit-card.is-yes { border-color: var(--fx-border-accent); }
+
+    .fit-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      margin: 0 auto 20px;
+      background: var(--fx-bg-elevated);
+      border: 1px solid var(--fx-border-medium);
+      color: var(--fx-text-secondary);
+    }
+
+    .is-yes .fit-icon {
+      background: rgba(85, 230, 126, 0.1);
+      border-color: var(--fx-border-accent);
+      color: var(--fx-accent);
+    }
+
+    .fit-card h3 {
+      font-size: 1.1875rem;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--fx-text-primary);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .fit-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--fx-text-secondary);
+      text-align: center;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .fit-note {
+      display: block;
+      margin: 28px auto 0;
+      max-width: 680px;
+      padding: 20px 24px;
+      background: var(--fx-bg-pill);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--fx-text-primary);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .fit-note .note-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--fx-accent);
+      box-shadow: 0 0 10px var(--fx-accent);
+      vertical-align: 2px;
+      margin-right: 8px;
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    @media (min-width: 960px) {
+      .fit-grid { grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 64px; }
+      .fit-card { padding: 42px 36px; }
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       DOBRA 6 — PERGUNTAS FREQUENTES (TODOS OS ITENS FECHADOS)
+       ═════════════════════════════════════════════════════════ */
+    .faq .glow-back-top { top: -260px; left: 10%; }
+    .faq .glow-back-bottom { bottom: -260px; right: 15%; }
+
+    .faq-grid {
+      display: grid;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .fx-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .fx-acc-item {
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-sm);
+      overflow: hidden;
+      transition: border-color .15s;
+    }
+
+    .fx-acc-item[open] { border-color: var(--fx-border-medium); }
+
+    .fx-acc-item summary {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.95rem;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      color: var(--fx-text-primary);
+      line-height: 1.4;
+    }
+
+    .fx-acc-item summary::-webkit-details-marker { display: none; }
+
+    .fx-acc-item summary::after {
+      content: '+';
+      flex-shrink: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--fx-accent);
+    }
+
+    .fx-acc-item[open] summary::after { content: '\2212'; }
+
+    .fx-acc-body {
+      padding: 0 20px 18px;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--fx-text-secondary);
+    }
+
+    @media (min-width: 960px) {
+      .faq-grid { grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: center; }
+      .faq h2 { position: static; font-size: clamp(2rem, 2.75vw, 2.5rem); line-height: 1.2; }
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       DOBRA 7 — CTA FINAL (BANNER ESTILO FXOLOGY)
+       ═════════════════════════════════════════════════════════ */
+    .cta-final {
+      position: relative;
+      padding: 104px 0 112px;
+      border-bottom: none;
+    }
+
+    .cta-final .glow-back-top { top: -260px; left: 15%; }
+
+    .cta-banner {
+      position: relative;
+      background: #111215;
+      border: 1px solid var(--fx-border-medium);
+      border-radius: var(--fx-radius-banner);
+      padding: 72px 40px 80px;
+      text-align: center;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .cta-banner-orb {
+      position: absolute;
+      top: -140px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 440px;
+      height: 280px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(85, 230, 126, 0.25) 0%, rgba(85, 230, 126, 0.04) 50%, transparent 75%);
+      pointer-events: none;
+      filter: blur(20px);
+    }
+
+    .cta-floor-grid {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background-image:
+        linear-gradient(rgba(85, 230, 126, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(85, 230, 126, 0.15) 1px, transparent 1px);
+      background-size: 28px 28px;
+      transform: perspective(250px) rotateX(60deg);
+      transform-origin: bottom center;
+      opacity: 0.25;
+      mask-image: linear-gradient(to top, rgba(0,0,0,1) 10%, transparent 90%);
+      pointer-events: none;
+    }
+
+    .cta-banner .grad-title {
+      font-size: clamp(2.25rem, 6.5vw, 3.5rem);
+      margin: 0 auto 20px;
+      max-width: 820px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-banner-sub {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--fx-text-secondary);
+      max-width: 640px;
+      margin: 0 auto 36px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       RODAPÉ (COMPACTO COM LINHA DE SEPARAÇÃO E TIPOGRAFIA REDUZIDA)
+       ═════════════════════════════════════════════════════════ */
+    .footer {
+      position: relative;
+      background: var(--fx-bg-page);
+      padding: 32px 0 28px;
+      border-top: 1px solid var(--fx-border-subtle);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      color: var(--fx-text-primary);
+    }
+
+    .footer-brand .fx-logo-box {
+      width: 20px;
+      height: 20px;
+      font-size: 10px;
+      border-radius: 5px;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      line-height: 1.6;
+      color: var(--fx-text-secondary);
+      max-width: 680px;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       EFEITOS E MOVIMENTOS INTERATIVOS
+       ═════════════════════════════════════════════════════════ */
+    /* 1. Estrelas cadentes (Dobra 3 apenas — traços finos e delicados estilo chuvinha FXology) */
+    .shooting-stars-wrap {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .shooting-star {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(184, 245, 206, 0.55) 25%, rgba(255, 255, 255, 0.12) 70%, transparent 100%);
+      box-shadow: 0 0 3px rgba(85, 230, 126, 0.25);
+      border-radius: 999px;
+      opacity: 0;
+      transform: rotate(-45deg);
+      pointer-events: none;
+    }
+
+    .shooting-star::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -1px;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 0 4px 1px rgba(85, 230, 126, 0.9), 0 0 8px rgba(255, 255, 255, 0.7);
+    }
+
+    @keyframes shootingRain {
+      0% {
+        transform: translate3d(70px, -70px, 0) rotate(-45deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.7;
+      }
+      70% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translate3d(-340px, 340px, 0) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Distribuídas com apenas 1 na direita, reduzindo excesso */
+    .star-1 {
+      top: 18%;
+      left: 14%;
+      width: 80px;
+      animation: shootingRain 2.8s infinite 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .star-2 {
+      top: 42%;
+      left: 45%;
+      width: 90px;
+      animation: shootingRain 3.0s infinite 1.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .star-3 {
+      top: 25%;
+      right: 14%;
+      width: 75px;
+      animation: shootingRain 2.7s infinite 3.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    /* Luz verde bem clarinha seguindo o mouse (Ambient Mouse Glow) */
+    #cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 320px;
+      height: 320px;
+      margin-left: -160px;
+      margin-top: -160px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      background: radial-gradient(circle, rgba(85, 230, 126, 0.08) 0%, rgba(85, 230, 126, 0.02) 40%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      will-change: transform, opacity;
+    }
+
+    #cursor-glow.is-active {
+      opacity: 1;
+    }
+
+    #cursor-glow.is-btn-hover {
+      opacity: 0 !important;
+    }
+
+    @media (max-width: 767px) {
+      #cursor-glow { display: none !important; }
+    }
+
+    /* 2. Headlines — Palavras aparecendo de cima pra baixo */
+    .hero h1.reveal,
+    .problem h2.reveal,
+    .method h2.reveal,
+    .steps h2.reveal,
+    .audience h2.reveal,
+    .faq h2.reveal,
+    .cta-banner h2.reveal {
+      transform: none !important;
+      opacity: 1 !important;
+      transition: none !important;
+    }
+
+    .hl-word {
+      display: inline-block !important;
+      opacity: 0;
+      transform: translateY(-22px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+      background: linear-gradient(180deg, #FFFFFF 30%, var(--fx-accent-mint) 100%) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+    }
+
+    .hl-word.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 3. Ícones Dobra 3 interativos a cada 3s */
+    @keyframes iconTremor {
+      0%, 75%, 100% { transform: rotate(0deg) scale(1); }
+      78% { transform: rotate(-12deg) scale(1.12); }
+      82% { transform: rotate(12deg) scale(1.12); }
+      86% { transform: rotate(-8deg) scale(1.06); }
+      90% { transform: rotate(8deg) scale(1.06); }
+      94% { transform: rotate(-3deg) scale(1.02); }
+    }
+
+    @keyframes iconPisca {
+      0%, 82%, 100% { transform: scaleY(1); opacity: 1; }
+      88% { transform: scaleY(0.08); opacity: 0.5; }
+      93% { transform: scaleY(1); opacity: 1; }
+    }
+
+    @keyframes iconGiraEscudo {
+      0%, 70%, 100% { transform: perspective(260px) rotateY(0deg); }
+      85% { transform: perspective(260px) rotateY(180deg); }
+      95% { transform: perspective(260px) rotateY(360deg); }
+    }
+
+    .icon-vinculo svg {
+      animation: iconTremor 3s infinite ease-in-out;
+      transform-origin: center;
+    }
+
+    .icon-olho svg {
+      animation: iconPisca 3s infinite ease-in-out;
+      transform-origin: center;
+    }
+
+    .icon-escudo svg {
+      animation: iconGiraEscudo 3s infinite ease-in-out;
+      transform-origin: center;
+    }
+
+    /* Cursor de digitação */
+    .type-cur {
+      color: var(--fx-accent);
+      font-weight: 700;
+      display: inline-block;
+      margin-left: 2px;
+      animation: cursorBlink 0.6s infinite alternate;
+    }
+
+    @keyframes cursorBlink {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    /* 5. Dobra 4 — Pontos e textos aparecendo a cada 1s */
+    .path-step {
+      opacity: 0;
+      transform: translateY(18px) scale(0.96);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .path-step.step-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .path-step.step-visible .path-node {
+      animation: nodeGlowPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes nodeGlowPop {
+      0% { transform: scale(0.2); box-shadow: 0 0 0 rgba(85,230,126,0); }
+      50% { transform: scale(1.4); box-shadow: 0 0 24px rgba(85,230,126,1); }
+      100% { transform: scale(1); box-shadow: 0 0 10px rgba(85,230,126,0.6); }
+    }
+
+    /* 6. Dobra 5 — Quadrados aparecem girando em torno de si */
+    .fit-card,
+    .fit-card.reveal {
+      opacity: 0 !important;
+      transform: perspective(900px) rotateY(90deg) scale(0.92) !important;
+      transition: opacity 0.85s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+      transform-style: preserve-3d;
+    }
+
+    .fit-card.is-spun,
+    .fit-card.reveal.is-spun {
+      opacity: 1 !important;
+      transform: perspective(900px) rotateY(0deg) scale(1) !important;
+    }
+
+    /* 8. Dobra 7 — Quadrado grande estilo espelho fosco com flash verde suave */
+    .cta-banner {
+      position: relative;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(18, 28, 22, 0.65) 45%, rgba(10, 15, 12, 0.85) 100%) !important;
+      backdrop-filter: blur(24px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+      border: 1px solid rgba(85, 230, 126, 0.28) !important;
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.8),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.5),
+        inset 0 0 35px rgba(85, 230, 126, 0.08) !important;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: -160%;
+      width: 90%;
+      height: 220%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(85, 230, 126, 0.01) 20%,
+        rgba(85, 230, 126, 0.15) 48%,
+        rgba(255, 255, 255, 0.14) 52%,
+        rgba(85, 230, 126, 0.05) 65%,
+        transparent 100%
+      );
+      transform: rotate(25deg);
+      pointer-events: none;
+      z-index: 2;
+      animation: ctaGreenSweep 8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes ctaGreenSweep {
+      0% { left: -160%; }
+      45%, 100% { left: 230%; }
+    }
+
+    /* 9. Dobra 1 — Botão com flash de luz branca leve */
+    .hero-content .btn-fx-primary {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content .btn-fx-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -140%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 25%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 100%
+      );
+      transform: skewX(-25deg);
+      pointer-events: none;
+      animation: heroButtonShimmer 4s infinite ease-in-out;
+    }
+
+    @keyframes heroButtonShimmer {
+      0%, 30% { left: -140%; }
+      65%, 100% { left: 240%; }
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       REVEAL (JS)
+       ═════════════════════════════════════════════════════════ */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
+      transition-delay: var(--d, 0s);
+    }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    /* ═════════════════════════════════════════════════════════
+       RESPONSIVO (mobile primeiro & ajustes exclusivos mobile)
+       ═════════════════════════════════════════════════════════ */
+    @media (max-width: 767px) {
+      .br-desktop { display: none !important; }
+      .br-mobile  { display: inline !important; }
+
+      /* Dobra 1 — Hero Mobile: Texto abaixo da imagem (na área escura da mesa), laptop visível no topo */
+      .hero {
+        padding: clamp(310px, 48vh, 360px) 0 64px;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background-image:
+          linear-gradient(180deg, transparent 0%, transparent 30%, rgba(14, 15, 17, 0.50) 44%, rgba(14, 15, 17, 0.94) 62%, #0E0F11 85%, #0E0F11 100%),
+          radial-gradient(circle at 50% 20%, rgba(85, 230, 126, 0.12) 0%, transparent 55%),
+          url('assets/hero-laptop-mobile.jpg');
+        background-position: center top;
+        background-size: cover;
+      }
+
+      .hero .grid-pattern {
+        -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, transparent 85%);
+                mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, transparent 85%);
+      }
+
+      .hero-content {
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero h1 {
+        text-align: center;
+        font-size: clamp(1.3rem, 5.6vw, 1.7rem);
+        line-height: 1.25;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-sub {
+        text-align: center;
+        margin: 0 auto 28px;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        max-width: 420px;
+      }
+
+      .hero-content .btn-fx-primary {
+        margin: 0 auto;
+      }
+
+      /* Dobra 2 — Moedas subidas, texto próximo às moedas, espaçamento ampliado antes da Dobra 3 */
+      .problem {
+        padding-top: 24px !important;
+        padding-bottom: 92px !important;
+      }
+
+      .problem-media {
+        margin-top: -32px !important;
+        margin-bottom: -44px !important;
+      }
+
+      .problem-media .coins-image-wrap img {
+        max-width: 280px;
+        transform: translateY(-24px) !important;
+      }
+
+      .problem h2 {
+        font-size: clamp(1.52rem, 6.2vw, 2.02rem) !important;
+        line-height: 1.15 !important;
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+        margin: 0 auto 10px !important;
+      }
+
+      .problem h2 br {
+        display: none !important;
+      }
+
+      .problem h2 > span.u-nowrap-d2,
+      .problem h2 > span:not(.hl-word) {
+        display: block !important;
+        text-align: center !important;
+        line-height: 1.15 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .problem h2 > span.u-nowrap-d2:first-child,
+      .problem h2 > span:not(.hl-word):first-child {
+        margin-bottom: 2px !important;
+      }
+
+      .problem-content {
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+      }
+
+      .problem-copy {
+        text-align: center !important;
+      }
+
+      .problem-copy p {
+        text-align: center !important;
+        font-size: 0.9375rem !important; /* 15px (-2px de 17px) */
+        line-height: 1.62 !important;
+      }
+
+      .problem-copy p + p {
+        margin-top: 12px !important;
+      }
+
+      /* Dobra 3 — Aumentado respiro superior para afastar da Dobra 2 */
+      .method {
+        padding-top: 72px !important;
+        padding-bottom: 64px !important;
+      }
+
+      .method h2 {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        font-size: clamp(1.22rem, 5.0vw, 1.68rem) !important;
+        line-height: 1.2 !important;
+        margin: 0 auto 24px !important;
+      }
+
+      .method h2 br {
+        display: block !important;
+      }
+
+      .method h2 > span.u-nowrap-d3,
+      .method h2 > span:not(.hl-word),
+      .u-nowrap-d3 {
+        display: inline-block !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+      }
+
+      .hl-word {
+        display: inline-block !important;
+      }
+
+      /* Dobra 4 — Headline centralizada em 2 linhas (reduzida em 2px) */
+      .steps h2 {
+        font-size: clamp(1.29rem, 5.1vw, 1.69rem) !important;
+        line-height: 1.22 !important;
+        text-align: center !important;
+      }
+
+      .u-nowrap-map {
+        white-space: nowrap !important;
+      }
+
+      /* Dobra 5 — Headline aumentada e centralizada */
+      .audience h2 {
+        font-size: clamp(1.55rem, 6.2vw, 1.95rem) !important;
+        line-height: 1.22 !important;
+        text-align: center !important;
+      }
+
+      .fit-note {
+        padding: 14px 12px;
+        font-size: clamp(11.5px, 3.2vw, 12.5px);
+        line-height: 1.5;
+      }
+
+      .u-nowrap-fit {
+        white-space: nowrap;
+      }
+
+      /* Dobra 6 (FAQ) — Headline centralizada em 2 linhas */
+      .faq h2 {
+        text-align: center;
+        font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+        line-height: 1.25;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 639px) {
+      .topnav .container { padding: 0 16px; }
+      .topnav-logo { font-size: 15px; gap: 6px; }
+      .status-online-pill { padding: 4px 10px; font-size: 11px; gap: 6px; }
+    }
+
+    @media (min-width: 640px) {
+      .container { padding: 0 40px; }
+      .fx-feature-card { padding: 28px; gap: 24px; }
+    }
+
+    @media (min-width: 960px) {
+      .fold { padding: 120px 0; }
+      .hero { padding: calc(var(--header-h) + 88px) 0 120px; min-height: 100svh; }
+      .method-grid { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+      .method h2 { position: static; font-size: clamp(1.75rem, 2.5vw, 2.25rem); line-height: 1.22; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+      .btn-fx-primary, .btn-white, .btn-fx-secondary, .fx-feature-card { transition: none; }
+      .coin-flash { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ambient Cursor Glow Element (Desktop) -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ═════════════ TOPNAV ═════════════ -->
+  <header class="topnav" id="topo">
+    <div class="container">
+      <a class="topnav-logo" href="#topo" aria-label="Tessitura Investimentos, início da página">
+        <span class="fx-logo-box" aria-hidden="true">T</span>
+        <span>Tessitura <span class="muted">Investimentos</span></span>
+      </a>
+
+      <!-- Status Online Agora -->
+      <div class="status-online-pill">
+        <span class="dot-pulse" aria-hidden="true"></span>
+        <span>Online agora</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═════════════ DOBRA 1 — HERO COM MACBOOK VISÍVEL À DIREITA ═════════════ -->
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="grid-pattern"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 id="hero-titulo" class="grad-title reveal"><span class="u-nowrap-hero">Assessoria de investimentos</span><br><span class="u-nowrap-hero">que começa pelo seu objetivo,</span><br><span class="u-nowrap-hero">não pelo produto.</span></h1>
+          <p class="hero-sub reveal" style="--d:.12s">Para profissionais liberais e empresários<br class="br-desktop"> com patrimônio aplicado em mais de um<br class="br-desktop"> lugar. Você recebe um plano escrito logo<br class="br-desktop"> na primeira conversa.</p>
+          <div class="reveal" style="--d:.24s">
+            <a class="btn-fx-primary" href="#diagnostico">AGENDAR DIAGNÓSTICO GRATUITO</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════ DOBRA 2 — O PROBLEMA (IMAGEM GRANDE À ESQUERDA, TEXTO À DIREITA JUSTIFICADO) ═════════════ -->
+    <section class="fold problem" aria-labelledby="problema-titulo">
+      <div class="glow-back glow-back-top"></div>
+      <div class="glow-back glow-back-bottom"></div>
+      <div class="grid-pattern"></div>
+      <div class="container">
+        <div class="problem-grid">
+          <!-- Esquerda: Imagem grande das moedas -->
+          <div class="problem-media reveal" aria-hidden="true">
+            <div class="coins-stage">
+              <div class="coins-image-wrap">
+                <img src="assets/moedas-verde-fade.png" alt="Patrimônio fragmentado em diversas aplicações e moedas" width="576" height="1024" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- Direita: Textos alinhados à direita -->
+          <div class="problem-content">
+            <h2 id="problema-titulo" class="grad-title reveal"><span class="u-nowrap-d2">Dinheiro em vários lugares</span><br><span class="u-nowrap-d2">não é um plano.</span></h2>
+            <div class="problem-copy">
+              <p class="reveal">Parte no banco, parte na corretora, parte na poupança. Cada aplicação nasceu de uma decisão diferente, e juntas elas raramente mostram se você está no caminho do seu objetivo.</p>
+              <p class="reveal" style="--d:.1s">Muitas pessoas sentem que estão indo bem, mas não sabem dizer por quê. <span class="mark">Organizar esse quadro é o primeiro passo, antes de qualquer escolha.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════ DOBRA 3 — COMO TRABALHAMOS ═════════════ -->
+    <section class="fold method" aria-labelledby="metodo-titulo">
+      <div class="glow-back glow-back-bottom"></div>
+      <div class="grid-pattern"></div>
+
+      <!-- Efeito estrelas cadentes (Dobra 3 apenas — estilo chuvinha delicada FXology) -->
+      <div class="shooting-stars-wrap" aria-hidden="true">
+        <span class="shooting-star star-1"></span>
+        <span class="shooting-star star-2"></span>
+        <span class="shooting-star star-3"></span>
+      </div>
+
+      <div class="container">
+        <div class="method-grid">
+          <h2 id="metodo-titulo" class="grad-title reveal"><span class="u-nowrap-d3">Assessoria de investimentos</span><br><span class="u-nowrap-d3">não vende produto.</span><br><span class="u-nowrap-d3">Orienta suas escolhas.</span></h2>
+
+          <div class="pillars">
+            <article class="fx-feature-card reveal">
+              <span class="fx-feature-icon icon-vinculo" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg>
+              </span>
+              <div>
+                <h3 class="fx-feature-title">Vínculo declarado.</h3>
+                <p class="fx-feature-text">Somos assessores vinculados à Corretora Alvorada Capital. Não gerimos nem custodiamos o seu dinheiro, que permanece em seu nome na instituição.</p>
+              </div>
+            </article>
+
+            <article class="fx-feature-card reveal" style="--d:.08s">
+              <span class="fx-feature-icon icon-olho" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </span>
+              <div>
+                <h3 class="fx-feature-title">Remuneração explicada no início.</h3>
+                <p class="fx-feature-text">Você sabe como a assessoria é paga antes de decidir qualquer coisa.</p>
+              </div>
+            </article>
+
+            <article class="fx-feature-card reveal" style="--d:.16s">
+              <span class="fx-feature-icon icon-escudo" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6l8-3Z"/><path d="M9 12h6"/></svg>
+              </span>
+              <div>
+                <h3 class="fx-feature-title">Sem promessa de rentabilidade.</h3>
+                <p class="fx-feature-text">Nenhum investimento tem retorno garantido, e não vamos sugerir o contrário.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════ DOBRA 4 — O MÉTODO (MAPA ESPAÇADO LATERALMENTE E DECLIVADO) ═════════════ -->
+    <section class="fold steps" aria-labelledby="mapa-titulo">
+      <div class="glow-back glow-back-bottom"></div>
+      <div class="grid-pattern"></div>
+      <div class="container">
+        <h2 id="mapa-titulo" class="grad-title reveal"><span>Mapa Patrimonial:</span><br><span class="u-nowrap-map">do objetivo ao acompanhamento.</span></h2>
+
+        <div class="path-wrap-open reveal">
+          <span class="path-sky" aria-hidden="true"><span class="path-stars"></span></span>
+
+          <!-- Caminho horizontal em zigue-zague com inclinação mais suave e nós espaçados -->
+          <svg class="path-svg" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <polyline class="line" points="20,230 100,270 360,190 640,270 900,190"/>
+          </svg>
+          <span class="path-start" aria-hidden="true"></span>
+
+          <ol class="path">
+            <li class="path-step is-low" style="--x:10%;--y:52%">
+              <span class="path-node" aria-hidden="true"></span>
+              <div class="path-text">
+                <div class="path-num">01</div>
+                <h3 class="path-title">Diagnóstico</h3>
+                <p class="path-desc">Uma conversa sobre seus objetivos e prazos. Sem produto na mesa.</p>
+              </div>
+            </li>
+            <li class="path-step is-high" style="--x:36%;--y:36%">
+              <span class="path-node" aria-hidden="true"></span>
+              <div class="path-text">
+                <div class="path-num">02</div>
+                <h3 class="path-title">Panorama</h3>
+                <p class="path-desc">Reunimos tudo o que você já possui em um quadro único, com o que está aplicado e onde.</p>
+              </div>
+            </li>
+            <li class="path-step is-low" style="--x:64%;--y:52%">
+              <span class="path-node" aria-hidden="true"></span>
+              <div class="path-text">
+                <div class="path-num">03</div>
+                <h3 class="path-title">Plano por escrito</h3>
+                <p class="path-desc">Você recebe a lógica de cada escolha, em linguagem clara.</p>
+              </div>
+            </li>
+            <li class="path-step is-high" style="--x:90%;--y:36%">
+              <span class="path-node" aria-hidden="true"></span>
+              <div class="path-text">
+                <div class="path-num">04</div>
+                <h3 class="path-title">Acompanhamento</h3>
+                <p class="path-desc">Revisões periódicas, para o plano acompanhar a sua vida.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════ DOBRA 5 — PARA QUEM É (TEXTOS TOTALMENTE CENTRALIZADOS) ═════════════ -->
+    <section class="fold audience" aria-labelledby="quem-titulo">
+      <div class="glow-back glow-back-bottom"></div>
+      <div class="grid-pattern"></div>
+      <div class="container">
+        <h2 id="quem-titulo" class="grad-title reveal">Uma assessoria para<br class="br-mobile"> quem quer entender<br class="br-mobile"> o que já tem.</h2>
+
+        <div class="fit-grid">
+          <article class="fit-card is-yes reveal">
+            <span class="fit-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            </span>
+            <h3>É para você se:</h3>
+            <p>é profissional liberal ou empresário, tem patrimônio aplicado em mais de um lugar e sente que não tem um plano claro.</p>
+          </article>
+
+          <article class="fit-card reveal" style="--d:.08s">
+            <span class="fit-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </span>
+            <h3>Não é para você se:</h3>
+            <p>busca uma promessa de retorno ou uma indicação de produto pronto para comprar hoje.</p>
+          </article>
+        </div>
+
+        <p class="fit-note reveal" style="--d:.16s"><span class="note-dot" aria-hidden="true"></span><span class="u-nowrap-fit">A primeira conversa serve para os dois lados</span><br class="br-mobile"> <span class="u-nowrap-fit">decidirem<span class="br-desktop"><br></span> se faz sentido seguir.</span></p>
+      </div>
+    </section>
+
+    <!-- ═════════════ DOBRA 6 — PERGUNTAS FREQUENTES (TODOS OS ITENS FECHADOS) ═════════════ -->
+    <section class="fold faq" aria-labelledby="faq-titulo">
+      <div class="glow-back glow-back-top"></div>
+      <div class="glow-back glow-back-bottom"></div>
+      <div class="grid-pattern"></div>
+      <div class="container">
+        <div class="faq-grid">
+          <h2 id="faq-titulo" class="grad-title reveal"><span class="u-nowrap">Respostas diretas</span><br class="br-desktop"><br class="br-mobile"><span>para as dúvidas<br class="br-desktop"> mais comuns.</span></h2>
+
+          <div class="fx-accordion reveal" style="--d:.1s">
+            <details class="fx-acc-item">
+              <summary>Já tenho gerente no banco. Faz sentido falar com vocês?</summary>
+              <p class="fx-acc-body">Sim. A assessoria olha o conjunto do seu patrimônio, sem substituir o gerente. A análise começa pelo seu plano.</p>
+            </details>
+            <details class="fx-acc-item">
+              <summary>Meu dinheiro fica com a assessoria?</summary>
+              <p class="fx-acc-body">Não. Não gerimos nem custodiamos recursos. Os investimentos continuam em seu nome na instituição.</p>
+            </details>
+            <details class="fx-acc-item">
+              <summary>O diagnóstico tem custo?</summary>
+              <p class="fx-acc-body">Não. A conversa inicial é gratuita e não tem compromisso.</p>
+            </details>
+            <details class="fx-acc-item">
+              <summary>Vocês recomendam produtos logo no primeiro contato?</summary>
+              <p class="fx-acc-body">Não. O diagnóstico começa pelos objetivos e prazos. Recomendações só depois de um plano por escrito.</p>
+            </details>
+            <details class="fx-acc-item">
+              <summary>Tenho pouco tempo. Como funciona o acompanhamento?</summary>
+              <p class="fx-acc-body">A conversa inicial é curta, e as revisões são periódicas. Você escolhe presencial na capital ou por vídeo.</p>
+            </details>
+            <details class="fx-acc-item">
+              <summary>Vocês atendem fora da capital?</summary>
+              <p class="fx-acc-body">Sim, por vídeo, em qualquer lugar. O atendimento presencial é na capital.</p>
+            </details>
+            <details class="fx-acc-item">
+              <summary>Quanto tempo leva para começar?</summary>
+              <p class="fx-acc-body">Depois do diagnóstico, o plano por escrito é entregue em [PREENCHER: prazo de entrega do plano].</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════ SEÇÃO 7 — CTA FINAL (BANNER ESTILO FXOLOGY) ═════════════ -->
+    <section class="fold cta-final" id="diagnostico" aria-labelledby="cta-titulo">
+      <div class="glow-back glow-back-top"></div>
+      <div class="container">
+        <div class="cta-banner reveal">
+          <div class="cta-banner-orb" aria-hidden="true"></div>
+          <div class="cta-floor-grid" aria-hidden="true"></div>
+
+          <h2 id="cta-titulo" class="grad-title">Veja se o seu dinheiro está indo na direção do seu objetivo.</h2>
+          <p class="cta-banner-sub">Responda um questionário curto sobre objetivos e prazos. Depois, agende uma conversa de diagnóstico, sem compromisso, pelo WhatsApp.</p>
+
+          <div class="cta-actions">
+            <a class="btn-white" href="[PREENCHER: link do questionário]">RESPONDER O QUESTIONÁRIO</a>
+            <a class="btn-fx-secondary" href="[PREENCHER: link do WhatsApp]">AGENDAR CONVERSA PELO WHATSAPP</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═════════════ RODAPÉ (COMPACTO) ═════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="fx-logo-box" aria-hidden="true">T</span>
+          <span>Tessitura Investimentos</span>
+        </div>
+        <p class="footer-text">
+          Assessoria vinculada à Corretora Alvorada Capital. Não gerimos nem custodiamos recursos.<br>
+          © 2026 Tessitura Investimentos. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 1. Revelar elementos com .reveal ao entrar na tela (exceto os tratados com animações específicas)
+    (function () {
+      var els = document.querySelectorAll('.reveal:not(.grad-title):not(.fit-card)');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
+        els.forEach(function (el) { io.observe(el); });
+      }
+
+      // 2. Headlines de cada dobra — Palavras aparecendo de cima pra baixo (1 segundo cada palavra)
+      (function initHeadlineWords() {
+        var headlines = document.querySelectorAll('.hero h1, .problem h2, .method h2, .steps h2, .audience h2, .faq h2, .cta-banner h2');
+        headlines.forEach(function (hl) {
+          var wordIdx = 0;
+          function processNode(node) {
+            if (node.nodeType === 3) {
+              var text = node.textContent;
+              if (!text.trim()) return;
+              var frag = document.createDocumentFragment();
+              var tokens = text.split(/(\s+)/);
+              tokens.forEach(function (t) {
+                if (!t) return;
+                if (/^\s+$/.test(t)) {
+                  frag.appendChild(document.createTextNode(t));
+                } else {
+                  var span = document.createElement('span');
+                  span.className = 'hl-word';
+                  span.textContent = t;
+                  span.setAttribute('data-w-idx', wordIdx++);
+                  frag.appendChild(span);
+                }
+              });
+              node.parentNode.replaceChild(frag, node);
+            } else if (node.nodeType === 1) {
+              if (node.classList.contains('hl-word')) return;
+              Array.from(node.childNodes).forEach(processNode);
+            }
+          }
+          processNode(hl);
+
+          var words = hl.querySelectorAll('.hl-word');
+          if (!('IntersectionObserver' in window)) {
+            words.forEach(function (w) { w.classList.add('in-view'); });
+            return;
+          }
+
+          var hlObs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                words.forEach(function (w, i) {
+                  setTimeout(function () {
+                    w.classList.add('in-view');
+                  }, i * 90); // Cascata suave e fluida
+                });
+                hlObs.unobserve(e.target);
+              }
+            });
+          }, { threshold: 0.1, rootMargin: '0px 0px 30px 0px' });
+          hlObs.observe(hl);
+        });
+      })();
+
+      // 3. Dobra 3 — Digitação simultânea dos 3 cards ao entrar na tela
+      (function initDobra3Typing() {
+        var section = document.querySelector('.method');
+        if (!section) return;
+        var cardTexts = section.querySelectorAll('.fx-feature-text');
+        
+        cardTexts.forEach(function (p) {
+          p.setAttribute('data-full-text', p.textContent.trim());
+          p.innerHTML = '<span class="type-out"></span><span class="type-cur" aria-hidden="true">|</span>';
+        });
+
+        if (!('IntersectionObserver' in window)) {
+          cardTexts.forEach(function (p) {
+            p.textContent = p.getAttribute('data-full-text');
+          });
+          return;
+        }
+
+        var typed = false;
+        var methodObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting && !typed) {
+              typed = true;
+              cardTexts.forEach(function (p) {
+                var full = p.getAttribute('data-full-text');
+                var out = p.querySelector('.type-out');
+                var cur = p.querySelector('.type-cur');
+                var idx = 0;
+                var timer = setInterval(function () {
+                  if (idx < full.length) {
+                    out.textContent = full.substring(0, idx + 1);
+                    idx++;
+                  } else {
+                    clearInterval(timer);
+                    if (cur) cur.style.display = 'none';
+                  }
+                }, 16);
+              });
+              methodObs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        methodObs.observe(section);
+      })();
+
+      // 4. Dobra 4 — Mapa Patrimonial: linha e pontos aparecendo juntos a cada 1 segundo
+      (function initMapSteps() {
+        var section = document.querySelector('.steps');
+        if (!section) return;
+        var steps = section.querySelectorAll('.path-step');
+        var polyline = section.querySelector('.path-svg polyline.line');
+
+        var totalLen = 925;
+        if (polyline) {
+          try {
+            totalLen = polyline.getTotalLength() || 925;
+          } catch (err) {
+            totalLen = 925;
+          }
+          polyline.style.strokeDasharray = (totalLen + 20) + ' ' + (totalLen + 20);
+          polyline.style.strokeDashoffset = (totalLen + 20);
+        }
+
+        var cumulativeOffsets = [
+          totalLen * (1 - 89.5 / 925),
+          totalLen * (1 - 361.5 / 925),
+          totalLen * (1 - 652.7 / 925),
+          0
+        ];
+
+        if (!('IntersectionObserver' in window)) {
+          steps.forEach(function (s) { s.classList.add('step-visible'); });
+          if (polyline) {
+            polyline.style.strokeDashoffset = '0';
+            polyline.style.strokeDasharray = 'none';
+          }
+          return;
+        }
+
+        var mapObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              steps.forEach(function (step, i) {
+                setTimeout(function () {
+                  step.classList.add('step-visible');
+                  if (polyline) {
+                    polyline.style.strokeDashoffset = (i === steps.length - 1) ? 0 : cumulativeOffsets[i];
+                    if (i === steps.length - 1) {
+                      setTimeout(function () {
+                        polyline.style.strokeDasharray = 'none';
+                      }, 950);
+                    }
+                  }
+                }, i * 1000); // Exatamente a cada 1 segundo linha e ponto avançam juntos
+              });
+              mapObs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        mapObs.observe(section);
+      })();
+
+      // 5. Dobra 5 — Quadrados aparecendo girando em torno de si mesmos
+      (function initFitCardsSpin() {
+        var section = document.querySelector('.audience');
+        if (!section) return;
+        var cards = section.querySelectorAll('.fit-card');
+
+        if (!('IntersectionObserver' in window)) {
+          cards.forEach(function (c) { c.classList.add('is-spun'); });
+          return;
+        }
+
+        var fitObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              cards.forEach(function (card, i) {
+                setTimeout(function () {
+                  card.classList.add('is-spun');
+                }, i * 280);
+              });
+              fitObs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        fitObs.observe(section);
+      })();
+
+      // 6. Dobra 6 — FAQ digitando a resposta bem rápido toda vez que abrir
+      (function initFaqTyping() {
+        var items = document.querySelectorAll('.fx-acc-item');
+        items.forEach(function (item) {
+          var body = item.querySelector('.fx-acc-body');
+          if (!body) return;
+          var full = body.textContent.trim();
+          body.setAttribute('data-faq-full', full);
+
+          var summary = item.querySelector('summary');
+          var timer = null;
+
+          summary.addEventListener('click', function () {
+            var willOpen = !item.hasAttribute('open');
+            if (timer) clearInterval(timer);
+
+            if (willOpen) {
+              body.textContent = '';
+              var idx = 0;
+              timer = setInterval(function () {
+                if (idx < full.length) {
+                  body.textContent = full.substring(0, idx + 1);
+                  idx++;
+                } else {
+                  clearInterval(timer);
+                  timer = null;
+                }
+              }, 9); // Digitação rápida
+            } else {
+              body.textContent = full;
+            }
+          });
+        });
+      })();
+
+      // 7. Ambient Cursor Glow (Luz verde bem suave seguindo o cursor; some ao passar por botões/links)
+      (function initCursorGlow() {
+        if (window.innerWidth <= 767) return;
+        var glow = document.getElementById('cursor-glow');
+        if (!glow) return;
+
+        var mouseX = -9999, mouseY = -9999;
+        var currentX = -9999, currentY = -9999;
+        var ticking = false;
+
+        function onPointer(e) {
+          if (e.pointerType === 'touch') return;
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          if (!glow.classList.contains('is-active')) {
+            glow.classList.add('is-active');
+            currentX = mouseX;
+            currentY = mouseY;
+          }
+          var target = e.target;
+          var btn = target && target.closest('a, button, .btn, .btn-fx-primary, .fx-acc-summary, summary');
+          if (btn) {
+            glow.classList.add('is-btn-hover');
+          } else {
+            glow.classList.remove('is-btn-hover');
+          }
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateGlow);
+          }
+        }
+
+        window.addEventListener('mousemove', onPointer, { passive: true });
+        window.addEventListener('pointermove', onPointer, { passive: true });
+
+        window.addEventListener('mouseleave', function () {
+          glow.classList.remove('is-active');
+        });
+
+        function updateGlow() {
+          currentX += (mouseX - currentX) * 0.28;
+          currentY += (mouseY - currentY) * 0.28;
+          glow.style.transform = 'translate3d(' + currentX + 'px, ' + currentY + 'px, 0)';
+          if (Math.abs(mouseX - currentX) > 0.5 || Math.abs(mouseY - currentY) > 0.5) {
+            requestAnimationFrame(updateGlow);
+          } else {
+            ticking = false;
+          }
+        }
+      })();
+
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,2553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FXOLOGY — Design System & Component Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Helvetica Bold';
+      src: url('Helvetica-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       FXOLOGY DESIGN SYSTEM — CORE TOKENS & RESET
+       ═════════════════════════════════════════════════════════ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Base & Surfaces */
+      --fx-bg-canvas:        #050C06;
+      --fx-bg-page:          #0E0F11;
+      --fx-bg-card:          #141518;
+      --fx-bg-card-hover:    #181A1D;
+      --fx-bg-elevated:      #1C1E22;
+      --fx-bg-input:         #121316;
+      --fx-bg-pill:          #1A1C20;
+      --fx-bg-active:        #25272B;
+
+      /* Borders */
+      --fx-border-subtle:    rgba(255, 255, 255, 0.06);
+      --fx-border-medium:    rgba(255, 255, 255, 0.10);
+      --fx-border-strong:    rgba(255, 255, 255, 0.18);
+      --fx-border-accent:    rgba(85, 230, 126, 0.35);
+
+      /* Typography & Foreground */
+      --fx-text-primary:     #FFFFFF;
+      --fx-text-secondary:   #8E9299;
+      --fx-text-muted:       #9CA3AF;
+      --fx-text-tertiary:    #60646C;
+      --fx-text-inverse:     #0E0F11;
+
+      /* Neon Mint / Green Accent */
+      --fx-accent:           #55E67E;
+      --fx-accent-light:     #86EFAC;
+      --fx-accent-glow:      #22C55E;
+      --fx-accent-mint:      #B8F5CE;
+      --fx-accent-dark:      #12381F;
+
+      /* Metals System (Elemental Plans) */
+      --fx-metal-cu:         #C4754B; /* Copper */
+      --fx-metal-cu-glow:    rgba(196, 117, 75, 0.28);
+      --fx-metal-ag:         #CBD5E1; /* Silver */
+      --fx-metal-ag-glow:    rgba(203, 213, 225, 0.22);
+      --fx-metal-au:         #DFC066; /* Gold */
+      --fx-metal-au-glow:    rgba(223, 192, 102, 0.30);
+      --fx-metal-pt:         #B4BCC8; /* Platinum */
+      --fx-metal-pt-glow:    rgba(180, 188, 200, 0.24);
+      --fx-metal-rh:         #E4E4E7; /* Rhodium */
+      --fx-metal-rh-glow:    rgba(228, 228, 231, 0.35);
+
+      /* Semantic */
+      --fx-status-online:    #55E67E;
+      --fx-status-info:      #38BDF8;
+      --fx-status-warning:   #F59E0B;
+      --fx-status-error:     #EF4444;
+
+      /* Spacing Scale (4px base) */
+      --fx-space-1:          4px;
+      --fx-space-2:          8px;
+      --fx-space-3:          12px;
+      --fx-space-4:          16px;
+      --fx-space-5:          20px;
+      --fx-space-6:          24px;
+      --fx-space-8:          32px;
+      --fx-space-10:         40px;
+      --fx-space-12:         48px;
+      --fx-space-16:         64px;
+      --fx-space-20:         80px;
+
+      /* Border Radii */
+      --fx-radius-xs:        6px;
+      --fx-radius-sm:        8px;
+      --fx-radius-btn:       10px;
+      --fx-radius-card:      14px;
+      --fx-radius-panel:     16px;
+      --fx-radius-banner:    18px;
+      --fx-radius-pill:      9999px;
+
+      /* Shadows & Glows */
+      --fx-glow-accent:      0 0 24px rgba(85, 230, 126, 0.22);
+      --fx-glow-strong:      0 0 40px rgba(85, 230, 126, 0.40);
+      --fx-shadow-card:      0 12px 32px rgba(0, 0, 0, 0.45);
+
+      /* Fonts */
+      --font-headline:       'Helvetica Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-sans:           'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono:           'JetBrains Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--fx-bg-page);
+      color: var(--fx-text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient radial glow background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -150px;
+      left: 15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(85, 230, 126, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       SIDEBAR NAVIGATION (Vertical Index)
+       ═════════════════════════════════════════════════════════ */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 48px;
+      background: var(--fx-bg-page);
+      border-right: 1px solid var(--fx-border-subtle);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0;
+      gap: 4px;
+      z-index: 100;
+    }
+
+    .sidebar-logo-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #7CF89B, #2EC964);
+      margin-bottom: 12px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 8px rgba(85, 230, 126, 0.4);
+    }
+
+    .sidebar-num {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--fx-radius-xs);
+      border: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--fx-text-tertiary);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+    }
+
+    .sidebar-num:hover {
+      border-color: var(--fx-border-medium);
+      color: var(--fx-text-primary);
+      background: var(--fx-bg-elevated);
+    }
+
+    .sidebar-num.active {
+      border-color: var(--fx-accent);
+      color: var(--fx-accent);
+      background: rgba(85, 230, 126, 0.08);
+      box-shadow: 0 0 10px rgba(85, 230, 126, 0.15);
+    }
+
+    .sidebar-divider {
+      width: 16px;
+      height: 1px;
+      background: var(--fx-border-subtle);
+      margin: 8px 0;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       TOPBAR NAVIGATION
+       ═════════════════════════════════════════════════════════ */
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 48px;
+      right: 0;
+      height: 52px;
+      background: rgba(14, 15, 17, 0.85);
+      border-bottom: 1px solid var(--fx-border-subtle);
+      backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      z-index: 99;
+    }
+
+    .topnav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--fx-text-primary);
+      letter-spacing: -0.03em;
+      padding-right: 20px;
+      border-right: 1px solid var(--fx-border-subtle);
+      height: 100%;
+    }
+
+    .fx-logo-box {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, #7CF89B 0%, #2EC964 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0E0F11;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: -0.5px;
+      box-shadow: 0 0 12px rgba(85, 230, 126, 0.35);
+    }
+
+    .topnav-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--fx-bg-pill);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-pill);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-secondary);
+      margin-left: 16px;
+    }
+
+    .dot-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--fx-accent);
+      box-shadow: 0 0 8px var(--fx-accent);
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .topnav-links {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      height: 100%;
+    }
+
+    .topnav-link {
+      padding: 0 16px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--fx-text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .topnav-link:hover {
+      color: var(--fx-text-primary);
+    }
+
+    .topnav-btn-cta {
+      margin-left: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      color: #0E0F11;
+      text-decoration: none;
+      padding: 0 5px 0 14px;
+      height: 34px;
+      border-radius: var(--fx-radius-btn);
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .topnav-btn-cta:hover {
+      background: #F3F4F6;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .topnav-btn-arrow {
+      width: 24px;
+      height: 24px;
+      background: var(--fx-accent);
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      color: #0E0F11;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       MAIN WRAPPER & CONTAINER
+       ═════════════════════════════════════════════════════════ */
+    .main {
+      margin-left: 48px;
+      padding-top: 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       HERO SHOWCASE SECTION
+       ═════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      padding: 72px 0 64px;
+      border-bottom: 1px solid var(--fx-border-subtle);
+      overflow: hidden;
+    }
+
+    .hero-glow-back {
+      position: absolute;
+      top: -100px;
+      right: 5%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(85, 230, 126, 0.12) 0%, rgba(85, 230, 126, 0.02) 40%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, transparent 80%);
+      pointer-events: none;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      background: var(--fx-bg-pill);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-pill);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--fx-text-muted);
+      margin-bottom: 24px;
+    }
+
+    .clover-icon {
+      width: 14px;
+      height: 14px;
+      color: var(--fx-accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #FFFFFF 30%, var(--fx-accent-mint) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--fx-text-secondary);
+      max-width: 620px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* FXology Buttons */
+    .btn-fx-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      height: 44px;
+      padding: 0 6px 0 18px;
+      background: #FFFFFF;
+      color: #0E0F11;
+      border: none;
+      border-radius: var(--fx-radius-btn);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-fx-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-fx-primary .arrow-box {
+      width: 32px;
+      height: 32px;
+      background: var(--fx-accent);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #0E0F11;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-fx-primary:hover .arrow-box {
+      transform: translateX(2px);
+    }
+
+    .btn-fx-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 20px;
+      background: transparent;
+      color: #E5E7EB;
+      border: 1px solid var(--fx-border-strong);
+      border-radius: var(--fx-radius-btn);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-fx-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .hero-meta-strip {
+      display: flex;
+      gap: 20px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta-item::before {
+      content: '■';
+      color: var(--fx-accent);
+      font-size: 7px;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       SECTION TEMPLATE
+       ═════════════════════════════════════════════════════════ */
+    .section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--fx-border-subtle);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .section-num {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--fx-accent);
+      border: 1px solid var(--fx-border-accent);
+      background: rgba(85, 230, 126, 0.05);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--fx-text-primary);
+    }
+
+    .section-desc {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-tertiary);
+      margin-left: auto;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       01 — COLOR SYSTEM
+       ═════════════════════════════════════════════════════════ */
+    .color-label {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--fx-accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .accent-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border: 1px solid var(--fx-border-medium);
+      border-radius: var(--fx-radius-card);
+      overflow: hidden;
+      margin-bottom: 36px;
+    }
+
+    .accent-block {
+      padding: 20px 16px;
+      cursor: pointer;
+      transition: transform 0.15s, opacity 0.15s;
+      position: relative;
+    }
+
+    .accent-block:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .accent-block .hex {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: #0E0F11;
+    }
+
+    .accent-block .label {
+      font-size: 10px;
+      color: rgba(14, 15, 17, 0.7);
+      margin-top: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .accent-block.dark .hex {
+      color: var(--fx-text-primary);
+    }
+
+    .accent-block.dark .label {
+      color: var(--fx-text-muted);
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .color-card {
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .color-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--fx-border-strong);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .color-swatch {
+      height: 60px;
+      width: 100%;
+    }
+
+    .color-info {
+      padding: 10px 12px;
+      background: var(--fx-bg-card);
+    }
+
+    .color-hex {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--fx-text-primary);
+    }
+
+    .color-name {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-tertiary);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Semantic status chips */
+    .status-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-btn);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .status-chip:hover {
+      border-color: var(--fx-border-medium);
+      transform: translateY(-1px);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       02 — ELEMENTAL METALS (Plano de Contas FXology)
+       ═════════════════════════════════════════════════════════ */
+    .metals-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .metal-card {
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      padding: 20px 16px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .metal-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, var(--metal-glow, rgba(255,255,255,0.05)), transparent 70%);
+      opacity: 0.6;
+      transition: opacity 0.25s;
+    }
+
+    .metal-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--metal-color);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+    }
+
+    .metal-card:hover::before {
+      opacity: 1;
+    }
+
+    .metal-symbol {
+      font-size: 42px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      background: linear-gradient(180deg, var(--metal-color) 20%, rgba(255,255,255,0.2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .metal-badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--fx-border-subtle);
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-tertiary);
+      margin-bottom: 8px;
+    }
+
+    .metal-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fx-text-primary);
+      margin-bottom: 6px;
+    }
+
+    .metal-stars {
+      color: var(--metal-color);
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .metal-hex {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--metal-color);
+      font-weight: 700;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       03 — TYPOGRAPHY
+       ═════════════════════════════════════════════════════════ */
+    .type-display-sample {
+      font-size: 46px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      color: var(--fx-text-primary);
+      margin-bottom: 12px;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--fx-accent-mint) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .type-weights-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 24px 0 32px;
+    }
+
+    .weight-chip {
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      padding: 12px 18px;
+      flex: 1;
+      min-width: 140px;
+      transition: border-color 0.15s;
+    }
+
+    .weight-chip:hover {
+      border-color: var(--fx-accent);
+    }
+
+    .weight-label {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-tertiary);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .type-scale-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 6px;
+      margin-bottom: 32px;
+    }
+
+    .type-row {
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      transition: border-color 0.15s;
+    }
+
+    .type-row td {
+      padding: 12px 16px;
+      border-top: 1px solid var(--fx-border-subtle);
+      border-bottom: 1px solid var(--fx-border-subtle);
+    }
+
+    .type-row td:first-child {
+      border-left: 1px solid var(--fx-border-subtle);
+      border-top-left-radius: var(--fx-radius-xs);
+      border-bottom-left-radius: var(--fx-radius-xs);
+    }
+
+    .type-row td:last-child {
+      border-right: 1px solid var(--fx-border-subtle);
+      border-top-right-radius: var(--fx-radius-xs);
+      border-bottom-right-radius: var(--fx-radius-xs);
+    }
+
+    .type-row:hover td {
+      border-color: var(--fx-accent);
+    }
+
+    .type-tag {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--fx-accent);
+      font-weight: 700;
+    }
+
+    .type-specs {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-tertiary);
+      white-space: nowrap;
+    }
+
+    .outline-text-sample {
+      font-size: 56px;
+      font-weight: 800;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+      font-family: var(--font-sans);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       04 — SPACING & ARCHITECTURAL GRID
+       ═════════════════════════════════════════════════════════ */
+    .spacing-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 8px 14px;
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-xs);
+      transition: border-color 0.15s;
+    }
+
+    .spacing-row:hover {
+      border-color: var(--fx-accent);
+    }
+
+    .sp-var {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--fx-accent);
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    .sp-px {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-muted);
+      width: 44px;
+      flex-shrink: 0;
+    }
+
+    .sp-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .sp-bar {
+      height: 100%;
+      background: var(--fx-accent);
+      border-radius: 3px;
+      opacity: 0.7;
+    }
+
+    /* Architectural grid preview */
+    .arch-grid-box {
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-medium);
+      border-radius: var(--fx-radius-card);
+      padding: 32px;
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .arch-dot {
+      width: 6px;
+      height: 6px;
+      background: #000;
+      border: 1px solid var(--fx-accent);
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .arch-dot.tl { top: -3px; left: -3px; }
+    .arch-dot.tr { top: -3px; right: -3px; }
+    .arch-dot.bl { bottom: -3px; left: -3px; }
+    .arch-dot.br { bottom: -3px; right: -3px; }
+
+    /* ═════════════════════════════════════════════════════════
+       05 — BORDER RADIUS & SURFACES
+       ═════════════════════════════════════════════════════════ */
+    .radius-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .radius-card {
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      padding: 20px 14px;
+      text-align: center;
+      transition: border-color 0.15s;
+    }
+
+    .radius-card:hover {
+      border-color: var(--fx-accent);
+    }
+
+    .radius-shape {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 12px;
+      border: 1px solid var(--fx-accent);
+      background: rgba(85, 230, 126, 0.06);
+    }
+
+    .radius-val {
+      font-size: 13px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--fx-accent);
+    }
+
+    .radius-name {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-tertiary);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       06 — SHADOWS, GLOWS & 3D DEPTH
+       ═════════════════════════════════════════════════════════ */
+    .shadow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .shadow-card {
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: border-color 0.15s;
+    }
+
+    .shadow-card:hover {
+      border-color: var(--fx-border-medium);
+    }
+
+    .shadow-preview-box {
+      width: 64px;
+      height: 48px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: #181A1D;
+    }
+
+    .shadow-title {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--fx-accent);
+      margin-bottom: 4px;
+    }
+
+    .shadow-formula {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-tertiary);
+      line-height: 1.5;
+    }
+
+    /* Perspective 3D Grid Floor */
+    .grid-floor-box {
+      height: 160px;
+      background: var(--fx-bg-canvas);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .grid-floor-mesh {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(85, 230, 126, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(85, 230, 126, 0.25) 1px, transparent 1px);
+      background-size: 28px 28px;
+      transform: perspective(300px) rotateX(60deg) translateY(20px);
+      transform-origin: bottom center;
+      opacity: 0.35;
+      mask-image: linear-gradient(to top, rgba(0,0,0,1) 10%, transparent 80%);
+    }
+
+    .grid-floor-beam {
+      position: absolute;
+      bottom: 25px;
+      width: 70%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--fx-accent), transparent);
+      box-shadow: 0 0 16px var(--fx-accent);
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       07 — LIVE COMPONENTS SHOWCASE
+       ═════════════════════════════════════════════════════════ */
+    .comp-stage {
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-panel);
+      padding: 36px 32px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .comp-stage-tag {
+      position: absolute;
+      top: -1px;
+      left: 20px;
+      background: var(--fx-bg-elevated);
+      border: 1px solid var(--fx-border-subtle);
+      border-top: none;
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-muted);
+      padding: 3px 10px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .comp-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Tertiary learn more button */
+    .btn-fx-tertiary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 14px;
+      background: #16181C;
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-sm);
+      color: var(--fx-text-primary);
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .btn-fx-tertiary:hover {
+      border-color: var(--fx-border-medium);
+      background: var(--fx-bg-elevated);
+    }
+
+    .btn-fx-tertiary .chevrons {
+      color: var(--fx-text-muted);
+      font-size: 10px;
+      letter-spacing: -1px;
+    }
+
+    /* Segmented Control / Tabs */
+    .segmented-control {
+      display: inline-flex;
+      padding: 4px;
+      background: var(--fx-bg-input);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-pill);
+      gap: 2px;
+    }
+
+    .segment-btn {
+      padding: 6px 18px;
+      border-radius: var(--fx-radius-pill);
+      border: none;
+      background: transparent;
+      color: var(--fx-text-muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .segment-btn:hover {
+      color: var(--fx-text-primary);
+    }
+
+    .segment-btn.active {
+      background: #FFFFFF;
+      color: #0E0F11;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Periodic Plan Card Component */
+    .fx-plan-card {
+      width: 280px;
+      background: #121316;
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      padding: 24px;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+
+    .fx-plan-card:hover {
+      border-color: var(--fx-metal-cu);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+    }
+
+    .fx-plan-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .fx-plan-badge {
+      padding: 4px 8px;
+      background: var(--fx-bg-elevated);
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--fx-metal-cu);
+    }
+
+    .fx-plan-big-symbol {
+      font-size: 80px;
+      font-weight: 300;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      text-align: center;
+      margin: 16px 0;
+      background: linear-gradient(180deg, var(--fx-metal-cu) 20%, transparent 95%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .fx-plan-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fx-text-primary);
+      margin-bottom: 4px;
+    }
+
+    .fx-plan-name sup {
+      font-size: 11px;
+      color: var(--fx-text-muted);
+      font-weight: 400;
+    }
+
+    .fx-plan-desc {
+      font-size: 12px;
+      color: var(--fx-text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* Addon Feature Card */
+    .fx-feature-card {
+      background: #141518;
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      padding: 24px;
+      max-width: 320px;
+      transition: all 0.2s ease;
+    }
+
+    .fx-feature-card:hover {
+      border-color: var(--fx-border-medium);
+      transform: translateY(-2px);
+    }
+
+    .fx-feature-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(85, 230, 126, 0.1);
+      border: 1px solid var(--fx-border-accent);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--fx-accent);
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .fx-feature-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--fx-text-primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .fx-feature-text {
+      font-size: 13px;
+      color: var(--fx-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Stepper Vertical Card */
+    .fx-stepper-card {
+      background: #131417;
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-panel);
+      padding: 24px;
+      max-width: 440px;
+    }
+
+    .fx-step-block {
+      padding-bottom: 20px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--fx-border-subtle);
+    }
+
+    .fx-step-block:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .fx-step-num {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--fx-accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .fx-step-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fx-text-primary);
+      margin-bottom: 6px;
+    }
+
+    .fx-step-desc {
+      font-size: 12px;
+      color: var(--fx-text-muted);
+      line-height: 1.6;
+    }
+
+    /* FAQ Accordion Component */
+    .fx-accordion {
+      max-width: 520px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .fx-acc-item {
+      background: #141518;
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-sm);
+      overflow: hidden;
+      transition: border-color 0.15s;
+    }
+
+    .fx-acc-item.open {
+      border-color: var(--fx-border-medium);
+    }
+
+    .fx-acc-header {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .fx-acc-q {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--fx-text-primary);
+    }
+
+    .fx-acc-icon {
+      font-size: 16px;
+      color: var(--fx-accent);
+      font-weight: 700;
+      transition: transform 0.2s ease;
+    }
+
+    .fx-acc-body {
+      padding: 0 20px 16px;
+      font-size: 13px;
+      color: var(--fx-text-secondary);
+      line-height: 1.6;
+      display: none;
+    }
+
+    .fx-acc-item.open .fx-acc-body {
+      display: block;
+    }
+
+    /* Coupled Input (Newsletter) */
+    .fx-coupled-input {
+      display: flex;
+      align-items: center;
+      background: var(--fx-bg-input);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-btn);
+      padding: 4px 4px 4px 16px;
+      max-width: 380px;
+      width: 100%;
+      transition: border-color 0.15s;
+    }
+
+    .fx-coupled-input:focus-within {
+      border-color: var(--fx-accent);
+      box-shadow: 0 0 12px rgba(85, 230, 126, 0.15);
+    }
+
+    .fx-coupled-input input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--fx-text-primary);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      flex: 1;
+    }
+
+    .fx-coupled-input input::placeholder {
+      color: var(--fx-text-tertiary);
+    }
+
+    .fx-coupled-input button {
+      background: #FFFFFF;
+      color: #0E0F11;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .fx-coupled-input button:hover {
+      background: #E5E7EB;
+    }
+
+    /* Social Round Buttons */
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #25272B;
+      border: 1px solid var(--fx-border-subtle);
+      display: grid;
+      place-items: center;
+      color: var(--fx-text-primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .social-btn:hover {
+      background: var(--fx-accent);
+      color: #0E0F11;
+      transform: translateY(-2px);
+      box-shadow: 0 0 14px rgba(85, 230, 126, 0.4);
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       CODE BLOCKS & COPY FUNCTIONALITY
+       ═════════════════════════════════════════════════════════ */
+    .code-wrap {
+      background: #111215;
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      overflow: hidden;
+      margin-top: 16px;
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      background: #16181C;
+      border-bottom: 1px solid var(--fx-border-subtle);
+    }
+
+    .code-lang {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--fx-text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--fx-border-medium);
+      color: var(--fx-text-muted);
+      font-size: 10px;
+      font-family: var(--font-mono);
+      padding: 3px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: all 0.15s;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--fx-accent);
+      color: var(--fx-accent);
+      background: rgba(85, 230, 126, 0.05);
+    }
+
+    .code-wrap pre {
+      padding: 18px 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.8;
+      overflow-x: auto;
+      color: #CBD5E1;
+    }
+
+    .c { color: #555962; } /* comment */
+    .k { color: var(--fx-accent); } /* token / key */
+    .v { color: #86EFAC; } /* value */
+    .s { color: #FCD34D; } /* string */
+
+    /* ═════════════════════════════════════════════════════════
+       QUICKSTART GUIDE
+       ═════════════════════════════════════════════════════════ */
+    .qs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .qs-card {
+      background: var(--fx-bg-card);
+      border: 1px solid var(--fx-border-subtle);
+      border-radius: var(--fx-radius-card);
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .qs-card:hover {
+      border-color: var(--fx-accent);
+    }
+
+    .qs-num {
+      font-size: 32px;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--fx-accent);
+      opacity: 0.35;
+      margin-bottom: 8px;
+    }
+
+    .qs-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--fx-text-primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .qs-desc {
+      font-size: 12px;
+      color: var(--fx-text-secondary);
+      line-height: 1.6;
+    }
+
+    .qs-desc code {
+      background: rgba(85, 230, 126, 0.1);
+      color: var(--fx-accent);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       TOAST NOTIFICATION
+       ═════════════════════════════════════════════════════════ */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      background: #181A1D;
+      border: 1px solid var(--fx-accent);
+      border-radius: var(--fx-radius-btn);
+      padding: 12px 20px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--fx-accent);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(85, 230, 126, 0.2);
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       RESPONSIVENESS
+       ═════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .metals-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .accent-strip {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .topnav { left: 0; }
+      .hero h1 { font-size: 40px; }
+      .metals-grid { grid-template-columns: repeat(2, 1fr); }
+      .accent-strip { grid-template-columns: 1fr 1fr; }
+      .shadow-grid { grid-template-columns: 1fr; }
+      .qs-grid { grid-template-columns: 1fr; }
+      .topnav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═════════════════════════════════════════════════════════
+     SIDEBAR VERTICAL INDEX
+     ═════════════════════════════════════════════════════════ -->
+<nav class="sidebar">
+  <div class="sidebar-logo-dot"></div>
+  <a href="#colors"      class="sidebar-num" title="Colors">01</a>
+  <a href="#metals"      class="sidebar-num" title="Metals System">02</a>
+  <a href="#typography"  class="sidebar-num" title="Typography">03</a>
+  <a href="#spacing"     class="sidebar-num" title="Spacing & Grid">04</a>
+  <a href="#radius"      class="sidebar-num" title="Border Radius">05</a>
+  <a href="#shadows"     class="sidebar-num" title="Shadows & Depth">06</a>
+  <a href="#components"  class="sidebar-num" title="Components">07</a>
+  <div class="sidebar-divider"></div>
+  <a href="#tokens"      class="sidebar-num" title="Full Tokens">TK</a>
+</nav>
+
+<!-- ═════════════════════════════════════════════════════════
+     TOPNAV
+     ═════════════════════════════════════════════════════════ -->
+<header class="topnav">
+  <div class="topnav-logo">
+    <div class="fx-logo-box">Fx</div>
+    <span>ology</span>
+    <div class="topnav-badge">
+      <div class="dot-pulse"></div>
+      DESIGN SYSTEM // v1.0
+    </div>
+  </div>
+  <nav class="topnav-links">
+    <a href="#colors"     class="topnav-link">Colors</a>
+    <a href="#metals"     class="topnav-link">Metals</a>
+    <a href="#typography" class="topnav-link">Typography</a>
+    <a href="#spacing"    class="topnav-link">Grid</a>
+    <a href="#components" class="topnav-link">Components</a>
+    <a href="#tokens"     class="topnav-link">Tokens</a>
+    <a href="#tokens"     class="topnav-btn-cta">
+      <span>Get Tokens</span>
+      <div class="topnav-btn-arrow">→</div>
+    </a>
+  </nav>
+</header>
+
+<div class="main">
+  <!-- ═════════════════════════════════════════════════════════
+       HERO SECTION
+       ═════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-glow-back"></div>
+    <div class="hero-grid-pattern"></div>
+    <div class="container">
+      <div class="hero-pill">
+        <span class="clover-icon">✦</span>
+        <span>FXology Design System &amp; Tokens</span>
+      </div>
+      <h1>DARK LUXURY FINTECH<br>DESIGN SYSTEM</h1>
+      <p class="hero-sub">
+        Extraído e sintetizado a partir do conceito da landing page FXology.
+        Tokens CSS, paleta de superfícies escuras profundas, acento verde neon, tipografia refinada e componentes interativos prontos para implementação.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-fx-primary" onclick="scrollToId('tokens')">
+          <span>COPY ALL TOKENS</span>
+          <div class="arrow-box">→</div>
+        </button>
+        <button class="btn-fx-secondary" onclick="scrollToId('components')">
+          EXPLORE COMPONENTS ⊡
+        </button>
+      </div>
+      <div class="hero-meta-strip">
+        <span class="hero-meta-item">PLUS JAKARTA SANS — 300 to 800</span>
+        <span class="hero-meta-item">NEON ACCENT — #55E67E</span>
+        <span class="hero-meta-item">5 ELEMENTAL METALS — Cu Ag Au Pt Rh</span>
+        <span class="hero-meta-item">4PX ARCHITECTURAL GRID</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════
+       01 — COLOR SYSTEM
+       ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="colors">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Color System</h2>
+        <span class="section-desc">// 16 tokens ativos</span>
+      </div>
+
+      <!-- Accent Neon Strip -->
+      <div class="color-label">⚡ Primary Accent / Neon Mint</div>
+      <div class="accent-strip">
+        <div class="accent-block" style="background: #86EFAC;" onclick="copyHex('#86EFAC')">
+          <div class="hex">#86EFAC</div>
+          <div class="label">mint-light · highlight</div>
+        </div>
+        <div class="accent-block" style="background: #55E67E;" onclick="copyHex('#55E67E')">
+          <div class="hex">#55E67E</div>
+          <div class="label">neon-primary · CTA &amp; focus</div>
+        </div>
+        <div class="accent-block" style="background: #22C55E;" onclick="copyHex('#22C55E')">
+          <div class="hex">#22C55E</div>
+          <div class="label">green-deep · pulse &amp; glow</div>
+        </div>
+        <div class="accent-block dark" style="background: #143521;" onclick="copyHex('#143521')">
+          <div class="hex">#143521</div>
+          <div class="label">neon-dim · badge bg</div>
+        </div>
+        <div class="accent-block dark" style="background: #050C06;" onclick="copyHex('#050C06')">
+          <div class="hex">#050C06</div>
+          <div class="label">canvas · background</div>
+        </div>
+      </div>
+
+      <!-- Surface / Dark Shades -->
+      <div class="color-label">Deep Charcoal Surfaces &amp; Panels</div>
+      <div class="color-grid">
+        <div class="color-card" onclick="copyHex('#0E0F11')">
+          <div class="color-swatch" style="background: #0E0F11; border-bottom: 1px solid rgba(255,255,255,0.06);"></div>
+          <div class="color-info">
+            <div class="color-hex">#0E0F11</div>
+            <div class="color-name">--fx-bg-page</div>
+          </div>
+        </div>
+        <div class="color-card" onclick="copyHex('#121316')">
+          <div class="color-swatch" style="background: #121316; border-bottom: 1px solid rgba(255,255,255,0.06);"></div>
+          <div class="color-info">
+            <div class="color-hex">#121316</div>
+            <div class="color-name">--fx-bg-input</div>
+          </div>
+        </div>
+        <div class="color-card" onclick="copyHex('#141518')">
+          <div class="color-swatch" style="background: #141518; border-bottom: 1px solid rgba(255,255,255,0.06);"></div>
+          <div class="color-info">
+            <div class="color-hex">#141518</div>
+            <div class="color-name">--fx-bg-card</div>
+          </div>
+        </div>
+        <div class="color-card" onclick="copyHex('#181A1D')">
+          <div class="color-swatch" style="background: #181A1D; border-bottom: 1px solid rgba(255,255,255,0.06);"></div>
+          <div class="color-info">
+            <div class="color-hex">#181A1D</div>
+            <div class="color-name">--fx-bg-card-hover</div>
+          </div>
+        </div>
+        <div class="color-card" onclick="copyHex('#1C1E22')">
+          <div class="color-swatch" style="background: #1C1E22; border-bottom: 1px solid rgba(255,255,255,0.06);"></div>
+          <div class="color-info">
+            <div class="color-hex">#1C1E22</div>
+            <div class="color-name">--fx-bg-elevated</div>
+          </div>
+        </div>
+        <div class="color-card" onclick="copyHex('#25272B')">
+          <div class="color-swatch" style="background: #25272B; border-bottom: 1px solid rgba(255,255,255,0.06);"></div>
+          <div class="color-info">
+            <div class="color-hex">#25272B</div>
+            <div class="color-name">--fx-bg-active</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography / Text Colors -->
+      <div class="color-label">Text &amp; Hierarchy</div>
+      <div class="color-grid">
+        <div class="color-card" onclick="copyHex('#FFFFFF')">
+          <div class="color-swatch" style="background: #FFFFFF;"></div>
+          <div class="color-info">
+            <div class="color-hex">#FFFFFF</div>
+            <div class="color-name">text-primary</div>
+          </div>
+        </div>
+        <div class="color-card" onclick="copyHex('#8E9299')">
+          <div class="color-swatch" style="background: #8E9299;"></div>
+          <div class="color-info">
+            <div class="color-hex">#8E9299</div>
+            <div class="color-name">text-secondary</div>
+          </div>
+        </div>
+        <div class="color-card" onclick="copyHex('#60646C')">
+          <div class="color-swatch" style="background: #60646C;"></div>
+          <div class="color-info">
+            <div class="color-hex">#60646C</div>
+            <div class="color-name">text-tertiary</div>
+          </div>
+        </div>
+        <div class="color-card" onclick="copyHex('#B8F5CE')">
+          <div class="color-swatch" style="background: #B8F5CE;"></div>
+          <div class="color-info">
+            <div class="color-hex">#B8F5CE</div>
+            <div class="color-name">text-mint-grad</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Semantic Status -->
+      <div class="color-label">Semantic &amp; Trading Status</div>
+      <div class="status-row">
+        <div class="status-chip" onclick="copyHex('#55E67E')">
+          <div class="status-dot" style="background: #55E67E; box-shadow: 0 0 6px #55E67E;"></div>
+          <span style="color: #55E67E;">#55E67E — FUNDED / PROFIT</span>
+        </div>
+        <div class="status-chip" onclick="copyHex('#38BDF8')">
+          <div class="status-dot" style="background: #38BDF8;"></div>
+          <span style="color: #38BDF8;">#38BDF8 — ASSESSMENT / INFO</span>
+        </div>
+        <div class="status-chip" onclick="copyHex('#F59E0B')">
+          <div class="status-dot" style="background: #F59E0B;"></div>
+          <span style="color: #F59E0B;">#F59E0B — TRAILING RISK</span>
+        </div>
+        <div class="status-chip" onclick="copyHex('#EF4444')">
+          <div class="status-dot" style="background: #EF4444;"></div>
+          <span style="color: #EF4444;">#EF4444 — DRAWDOWN BREACH</span>
+        </div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">CSS Variables</span>
+          <button class="copy-btn" onclick="copyBlock(this)">COPY</button>
+        </div>
+        <pre><span class="c">/* FXology Color System */</span>
+:root {
+  <span class="k">--fx-bg-canvas</span>:     <span class="v">#050C06</span>;
+  <span class="k">--fx-bg-page</span>:       <span class="v">#0E0F11</span>;
+  <span class="k">--fx-bg-card</span>:       <span class="v">#141518</span>;
+  <span class="k">--fx-bg-elevated</span>:   <span class="v">#1C1E22</span>;
+
+  <span class="k">--fx-accent</span>:        <span class="v">#55E67E</span>; <span class="c">/* Primary Mint Green */</span>
+  <span class="k">--fx-accent-light</span>:  <span class="v">#86EFAC</span>;
+  <span class="k">--fx-accent-glow</span>:   <span class="v">#22C55E</span>;
+
+  <span class="k">--fx-text-primary</span>:  <span class="v">#FFFFFF</span>;
+  <span class="k">--fx-text-secondary</span>:<span class="v">#8E9299</span>;
+  <span class="k">--fx-text-tertiary</span>: <span class="v">#60646C</span>;
+
+  <span class="k">--fx-border-subtle</span>: <span class="v">rgba(255, 255, 255, 0.06)</span>;
+  <span class="k">--fx-border-medium</span>: <span class="v">rgba(255, 255, 255, 0.10)</span>;
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════
+       02 — ELEMENTAL METALS SYSTEM
+       ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="metals">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Elemental Metals System</h2>
+        <span class="section-desc">// 5 níveis de contas químicas</span>
+      </div>
+      <p style="font-size: 13px; color: var(--fx-text-muted); margin-bottom: 24px; max-width: 680px;">
+        A hierarquia de desafios e contas de trading no FXology é estruturada como elementos da tabela periódica. Cada metal possui sua própria tonalidade metálica, glow e indicador estelar de complexidade.
+      </p>
+
+      <div class="metals-grid">
+        <!-- Copper -->
+        <div class="metal-card" style="--metal-color: var(--fx-metal-cu); --metal-glow: var(--fx-metal-cu-glow);" onclick="copyHex('#C4754B')">
+          <div class="metal-badge">Cu · 29</div>
+          <div class="metal-symbol">Cu</div>
+          <div class="metal-name">Copper</div>
+          <div class="metal-stars">✦</div>
+          <div class="metal-hex">#C4754B</div>
+        </div>
+
+        <!-- Silver -->
+        <div class="metal-card" style="--metal-color: var(--fx-metal-ag); --metal-glow: var(--fx-metal-ag-glow);" onclick="copyHex('#CBD5E1')">
+          <div class="metal-badge">Ag · 47</div>
+          <div class="metal-symbol">Ag</div>
+          <div class="metal-name">Silver</div>
+          <div class="metal-stars">✦✦</div>
+          <div class="metal-hex">#CBD5E1</div>
+        </div>
+
+        <!-- Gold -->
+        <div class="metal-card" style="--metal-color: var(--fx-metal-au); --metal-glow: var(--fx-metal-au-glow);" onclick="copyHex('#DFC066')">
+          <div class="metal-badge">Au · 79</div>
+          <div class="metal-symbol">Au</div>
+          <div class="metal-name">Gold</div>
+          <div class="metal-stars">✦✦✦</div>
+          <div class="metal-hex">#DFC066</div>
+        </div>
+
+        <!-- Platinum -->
+        <div class="metal-card" style="--metal-color: var(--fx-metal-pt); --metal-glow: var(--fx-metal-pt-glow);" onclick="copyHex('#B4BCC8')">
+          <div class="metal-badge">Pt · 78</div>
+          <div class="metal-symbol">Pt</div>
+          <div class="metal-name">Platinum</div>
+          <div class="metal-stars">✦✦✦✦</div>
+          <div class="metal-hex">#B4BCC8</div>
+        </div>
+
+        <!-- Rhodium -->
+        <div class="metal-card" style="--metal-color: var(--fx-metal-rh); --metal-glow: var(--fx-metal-rh-glow);" onclick="copyHex('#E4E4E7')">
+          <div class="metal-badge">Rh · 45</div>
+          <div class="metal-symbol">Rh</div>
+          <div class="metal-name">Rhodium</div>
+          <div class="metal-stars">✦✦✦✦✦</div>
+          <div class="metal-hex">#E4E4E7</div>
+        </div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">CSS Metals</span>
+          <button class="copy-btn" onclick="copyBlock(this)">COPY</button>
+        </div>
+        <pre><span class="c">/* FXology Metals Hierarchy */</span>
+:root {
+  <span class="k">--fx-metal-cu</span>: <span class="v">#C4754B</span>; <span class="c">/* Copper   — 1 Phase / Beginner */</span>
+  <span class="k">--fx-metal-ag</span>: <span class="v">#CBD5E1</span>; <span class="c">/* Silver   — 2 Phase / Intermediate */</span>
+  <span class="k">--fx-metal-au</span>: <span class="v">#DFC066</span>; <span class="c">/* Gold     — 1 Phase / Advanced */</span>
+  <span class="k">--fx-metal-pt</span>: <span class="v">#B4BCC8</span>; <span class="c">/* Platinum — Advanced Prop Trader */</span>
+  <span class="k">--fx-metal-rh</span>: <span class="v">#E4E4E7</span>; <span class="c">/* Rhodium  — Maximum Capital Elite */</span>
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════
+       03 — TYPOGRAPHY
+       ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="typography">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Typography System</h2>
+        <span class="section-desc">// Plus Jakarta Sans</span>
+      </div>
+
+      <div class="type-display-sample">How it works. Choose your account.</div>
+      <div style="font-size: 12px; font-family: var(--font-mono); color: var(--fx-text-tertiary);">
+        Family: 'Plus Jakarta Sans', -apple-system, sans-serif &nbsp;•&nbsp; Letter-spacing nos títulos: -0.035em
+      </div>
+
+      <div class="type-weights-row">
+        <div class="weight-chip">
+          <div class="weight-label">300 — Light</div>
+          <div style="font-weight: 300; font-size: 16px; color: #FFF;">Au [Gold] Challenge</div>
+        </div>
+        <div class="weight-chip">
+          <div class="weight-label">400 — Regular</div>
+          <div style="font-weight: 400; font-size: 16px; color: #FFF;">Our evaluation process</div>
+        </div>
+        <div class="weight-chip">
+          <div class="weight-label">500 — Medium</div>
+          <div style="font-weight: 500; font-size: 16px; color: #FFF;">Withdrawal on demand</div>
+        </div>
+        <div class="weight-chip">
+          <div class="weight-label">600 — SemiBold</div>
+          <div style="font-weight: 600; font-size: 16px; color: #FFF;">Start a challenge</div>
+        </div>
+        <div class="weight-chip">
+          <div class="weight-label">800 — ExtraBold</div>
+          <div style="font-weight: 800; font-size: 16px; color: #FFF;">FXOLOGY™</div>
+        </div>
+      </div>
+
+      <!-- Typography scale table -->
+      <table class="type-scale-table">
+        <tbody>
+          <tr class="type-row">
+            <td style="width: 70px;"><span class="type-tag">DISPLAY</span></td>
+            <td style="width: 140px;"><span class="type-specs">56px · W500 · -0.04em</span></td>
+            <td><div style="font-size: 28px; font-weight: 500; letter-spacing: -0.035em; color: #FFF;">How it works</div></td>
+          </tr>
+          <tr class="type-row">
+            <td><span class="type-tag">H1 / TITLE</span></td>
+            <td><span class="type-specs">44px · W500 · -0.035em</span></td>
+            <td><div style="font-size: 22px; font-weight: 500; letter-spacing: -0.03em; color: #FFF;">Choose your account</div></td>
+          </tr>
+          <tr class="type-row">
+            <td><span class="type-tag">H2 / SEC</span></td>
+            <td><span class="type-specs">32px · W500 · -0.03em</span></td>
+            <td><div style="font-size: 18px; font-weight: 500; letter-spacing: -0.02em; color: #FFF;">Tailor your account &amp; Addons</div></td>
+          </tr>
+          <tr class="type-row">
+            <td><span class="type-tag">CARD H</span></td>
+            <td><span class="type-specs">20px · W600 · -0.02em</span></td>
+            <td><div style="font-size: 16px; font-weight: 600; color: #FFF;">Increased Leverage</div></td>
+          </tr>
+          <tr class="type-row">
+            <td><span class="type-tag">BODY</span></td>
+            <td><span class="type-specs">14px · W400 · 1.5</span></td>
+            <td><div style="font-size: 14px; font-weight: 400; color: var(--fx-text-secondary);">Traders who choose this addon will receive 90% of trading gains.</div></td>
+          </tr>
+          <tr class="type-row">
+            <td><span class="type-tag">PILL</span></td>
+            <td><span class="type-specs">11px · W500 · mono</span></td>
+            <td><span class="hero-pill" style="margin: 0;">FXology Process</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Outline Monogram Feature -->
+      <div style="background: var(--fx-bg-card); border: 1px solid var(--fx-border-subtle); border-radius: var(--fx-radius-card); padding: 24px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div class="color-label">Platform Monogram Outline Style</div>
+          <p style="font-size: 13px; color: var(--fx-text-secondary); max-width: 480px;">
+            Usado em tamanho gigante no fundo dos cards de plataformas de trading (MetaTrader 4, MetaTrader 5 e DXtrade).
+          </p>
+        </div>
+        <div style="display: flex; gap: 24px;">
+          <div class="outline-text-sample">MT4</div>
+          <div class="outline-text-sample" style="-webkit-text-stroke-color: var(--fx-accent);">MT5</div>
+          <div class="outline-text-sample">DX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════
+       04 — SPACING & ARCHITECTURAL GRID
+       ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="spacing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Spacing &amp; Architectural Grid</h2>
+        <span class="section-desc">// base: 4px</span>
+      </div>
+
+      <div class="spacing-list">
+        <div class="spacing-row">
+          <span class="sp-var">--fx-space-1</span><span class="sp-px">4px</span>
+          <div class="sp-bar-wrap"><div class="sp-bar" style="width: 4px;"></div></div>
+        </div>
+        <div class="spacing-row">
+          <span class="sp-var">--fx-space-2</span><span class="sp-px">8px</span>
+          <div class="sp-bar-wrap"><div class="sp-bar" style="width: 8px;"></div></div>
+        </div>
+        <div class="spacing-row">
+          <span class="sp-var">--fx-space-3</span><span class="sp-px">12px</span>
+          <div class="sp-bar-wrap"><div class="sp-bar" style="width: 12px;"></div></div>
+        </div>
+        <div class="spacing-row">
+          <span class="sp-var">--fx-space-4</span><span class="sp-px">16px</span>
+          <div class="sp-bar-wrap"><div class="sp-bar" style="width: 16px;"></div></div>
+        </div>
+        <div class="spacing-row">
+          <span class="sp-var">--fx-space-5</span><span class="sp-px">20px</span>
+          <div class="sp-bar-wrap"><div class="sp-bar" style="width: 20px;"></div></div>
+        </div>
+        <div class="spacing-row">
+          <span class="sp-var">--fx-space-6</span><span class="sp-px">24px</span>
+          <div class="sp-bar-wrap"><div class="sp-bar" style="width: 24px;"></div></div>
+        </div>
+        <div class="spacing-row">
+          <span class="sp-var">--fx-space-8</span><span class="sp-px">32px</span>
+          <div class="sp-bar-wrap"><div class="sp-bar" style="width: 32px;"></div></div>
+        </div>
+        <div class="spacing-row">
+          <span class="sp-var">--fx-space-12</span><span class="sp-px">48px</span>
+          <div class="sp-bar-wrap"><div class="sp-bar" style="width: 48px;"></div></div>
+        </div>
+        <div class="spacing-row">
+          <span class="sp-var">--fx-space-16</span><span class="sp-px">64px</span>
+          <div class="sp-bar-wrap"><div class="sp-bar" style="width: 64px;"></div></div>
+        </div>
+      </div>
+
+      <!-- Architectural Grid Node Demo -->
+      <div class="color-label">Architectural Framing &amp; Grid Nodes</div>
+      <div class="arch-grid-box">
+        <div class="arch-dot tl"></div>
+        <div class="arch-dot tr"></div>
+        <div class="arch-dot bl"></div>
+        <div class="arch-dot br"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 14px; font-weight: 600; color: #FFF; margin-bottom: 4px;">Node Points &amp; Precision Wireframes</div>
+            <div style="font-size: 12px; color: var(--fx-text-muted);">
+              Linhas finas de 1px com nós circulares escuros nos 4 vértices do container, simulando módulos de engenharia de alta fidelidade.
+            </div>
+          </div>
+          <span class="hero-pill" style="margin: 0;">GRID: ACTIVE // 1440PX</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════
+       05 — BORDER RADIUS & SURFACES
+       ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="radius">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Border Radius &amp; Shapes</h2>
+        <span class="section-desc">// 6 raios padronizados</span>
+      </div>
+
+      <div class="radius-grid">
+        <div class="radius-card">
+          <div class="radius-shape" style="border-radius: 6px;"></div>
+          <div class="radius-val">6px</div>
+          <div class="radius-name">xs · tags / dots</div>
+        </div>
+        <div class="radius-card">
+          <div class="radius-shape" style="border-radius: 8px;"></div>
+          <div class="radius-val">8px</div>
+          <div class="radius-name">sm · arrow boxes</div>
+        </div>
+        <div class="radius-card">
+          <div class="radius-shape" style="border-radius: 10px;"></div>
+          <div class="radius-val">10px</div>
+          <div class="radius-name">btn · botões</div>
+        </div>
+        <div class="radius-card">
+          <div class="radius-shape" style="border-radius: 14px;"></div>
+          <div class="radius-val">14px</div>
+          <div class="radius-name">card · blocos</div>
+        </div>
+        <div class="radius-card">
+          <div class="radius-shape" style="border-radius: 18px;"></div>
+          <div class="radius-val">18px</div>
+          <div class="radius-name">banner · hero cta</div>
+        </div>
+        <div class="radius-card">
+          <div class="radius-shape" style="border-radius: 9999px;"></div>
+          <div class="radius-val">9999px</div>
+          <div class="radius-name">pill · badges</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════
+       06 — SHADOWS, GLOWS & 3D DEPTH
+       ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="shadows">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2 class="section-title">Shadows, Glows &amp; 3D Depth</h2>
+        <span class="section-desc">// Atmosfera visual</span>
+      </div>
+
+      <div class="shadow-grid">
+        <div class="shadow-card">
+          <div class="shadow-preview-box" style="box-shadow: 0 0 24px rgba(85, 230, 126, 0.3); border: 1px solid var(--fx-accent);"></div>
+          <div>
+            <div class="shadow-title">--fx-glow-accent</div>
+            <div class="shadow-formula">0 0 24px rgba(85, 230, 126, 0.22)</div>
+            <div style="font-size: 11px; color: var(--fx-text-muted); margin-top: 4px;">Uso: botões focados, spotlights de hover</div>
+          </div>
+        </div>
+
+        <div class="shadow-card">
+          <div class="shadow-preview-box" style="box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8); border: 1px solid var(--fx-border-medium);"></div>
+          <div>
+            <div class="shadow-title">--fx-shadow-card</div>
+            <div class="shadow-formula">0 16px 40px rgba(0, 0, 0, 0.70)</div>
+            <div style="font-size: 11px; color: var(--fx-text-muted); margin-top: 4px;">Uso: elevação de cards sobre o fundo escuro</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Perspective Grid Floor Preview -->
+      <div class="color-label">3D Perspective Grid Floor (Hero CTA &amp; Footer)</div>
+      <div class="grid-floor-box">
+        <div class="grid-floor-mesh"></div>
+        <div class="grid-floor-beam"></div>
+        <span class="hero-pill" style="position: relative; z-index: 2;">3D PERSPECTIVE FLOOR // MESH ACTIVE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════
+       07 — LIVE COMPONENTS SHOWCASE
+       ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="components">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2 class="section-title">Interactive Components Showcase</h2>
+        <span class="section-desc">// UI Kit completo</span>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="color-label">01 · Buttons &amp; Triggers</div>
+      <div class="comp-stage">
+        <div class="comp-stage-tag">Buttons</div>
+        <div class="comp-row">
+          <button class="btn-fx-primary">
+            <span>Start a challenge</span>
+            <div class="arrow-box">→</div>
+          </button>
+          <button class="btn-fx-primary">
+            <span>Get Funded</span>
+            <div class="arrow-box">→</div>
+          </button>
+          <button class="btn-fx-secondary">Free trial</button>
+          <a href="javascript:void(0)" class="btn-fx-tertiary">
+            <span>Learn more</span>
+            <span class="chevrons">&gt;&gt;&gt;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PILLS & TABS -->
+      <div class="color-label" style="margin-top: 28px;">02 · Pills &amp; Segmented Controls</div>
+      <div class="comp-stage">
+        <div class="comp-stage-tag">Tabs &amp; Pills</div>
+        <div class="comp-row" style="flex-direction: column; align-items: flex-start; gap: 20px;">
+          <!-- Segmented control -->
+          <div class="segmented-control" id="metalsTabs">
+            <button class="segment-btn active" onclick="switchTab(this)">Copper</button>
+            <button class="segment-btn" onclick="switchTab(this)">Silver</button>
+            <button class="segment-btn" onclick="switchTab(this)">Gold</button>
+            <button class="segment-btn" onclick="switchTab(this)">Platinum</button>
+            <button class="segment-btn" onclick="switchTab(this)">Rhodium</button>
+          </div>
+
+          <!-- Eyebrow badges -->
+          <div class="comp-row">
+            <div class="hero-pill" style="margin: 0;"><span class="clover-icon">✦</span> FXology Process</div>
+            <div class="hero-pill" style="margin: 0;">Step One</div>
+            <div class="hero-pill" style="margin: 0;">Step Two</div>
+            <div class="hero-pill" style="margin: 0;">Step Three</div>
+            <div class="hero-pill" style="margin: 0;">Choose a Platform</div>
+            <div class="hero-pill" style="margin: 0;">Payouts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REAL CARDS SHOWCASE -->
+      <div class="color-label" style="margin-top: 28px;">03 · Plan &amp; Feature Cards</div>
+      <div class="comp-stage">
+        <div class="comp-stage-tag">Card Patterns</div>
+        <div class="comp-row" style="align-items: flex-start; gap: 24px;">
+          <!-- Plan Card (Copper) -->
+          <div class="fx-plan-card">
+            <div class="fx-plan-header">
+              <span class="fx-plan-badge">Cu · 29</span>
+              <span style="color: var(--fx-metal-cu); font-size: 11px;">✦ For Beginners</span>
+            </div>
+            <div class="fx-plan-big-symbol">Cu</div>
+            <div class="fx-plan-name">Cu <sup>[Copper]</sup></div>
+            <div class="fx-plan-desc">Fxology Copper 1 phase training and evaluation program for traders.</div>
+            <a href="javascript:void(0)" class="btn-fx-tertiary" style="width: 100%;">
+              <span>Learn more</span>
+              <span class="chevrons">&gt;&gt;&gt;</span>
+            </a>
+          </div>
+
+          <!-- Feature Addon Card -->
+          <div class="fx-feature-card">
+            <div class="fx-feature-icon">⚡</div>
+            <div class="fx-feature-title">Increased Leverage</div>
+            <div class="fx-feature-text">
+              Trade with confidence and take advantage of increased leverage for your positions across major FX &amp; CFD pairs.
+            </div>
+          </div>
+
+          <!-- Vertical Stepper Card -->
+          <div class="fx-stepper-card">
+            <div class="fx-step-block">
+              <div class="fx-step-num">01 // ASSESSMENT</div>
+              <div class="fx-step-title">From 0 to funded in 1 step</div>
+              <div class="fx-step-desc">Generate a return of 10% without exceeding maximum trailing drawdown of 6% or daily 5%.</div>
+            </div>
+            <div class="fx-step-block">
+              <div class="fx-step-num">02 // ASSESSMENT 2</div>
+              <div class="fx-step-title">Risk Management Check</div>
+              <div class="fx-step-desc">Target 5% gain with static 10% max loss. Earn certified trader title.</div>
+            </div>
+            <div class="fx-step-block">
+              <div class="fx-step-num">03 // YOU'RE FUNDED</div>
+              <div class="fx-step-title">Up to 90% Split</div>
+              <div class="fx-step-desc">Scale your capital on live accounts with bi-weekly or on-demand payouts.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ & INPUTS -->
+      <div class="color-label" style="margin-top: 28px;">04 · Inputs &amp; Accordion FAQ</div>
+      <div class="comp-stage">
+        <div class="comp-stage-tag">Forms &amp; Accordion</div>
+        <div class="comp-row" style="align-items: flex-start; justify-content: space-between; gap: 32px;">
+          <!-- Accordion -->
+          <div class="fx-accordion">
+            <div class="fx-acc-item open" onclick="toggleAcc(this)">
+              <div class="fx-acc-header">
+                <span class="fx-acc-q">What does a real trade mean?</span>
+                <span class="fx-acc-icon">−</span>
+              </div>
+              <div class="fx-acc-body">
+                Trades are executed in market conditions with simulated live liquidity. Positions can be held without artificial volume scaling restrictions.
+              </div>
+            </div>
+
+            <div class="fx-acc-item" onclick="toggleAcc(this)">
+              <div class="fx-acc-header">
+                <span class="fx-acc-q">Are there any hidden fees?</span>
+                <span class="fx-acc-icon">+</span>
+              </div>
+              <div class="fx-acc-body">
+                No hidden fees or recurring subscriptions. One-time fee refundable upon successfully passing your evaluation and reaching your first payout.
+              </div>
+            </div>
+
+            <div class="fx-acc-item" onclick="toggleAcc(this)">
+              <div class="fx-acc-header">
+                <span class="fx-acc-q">Can I request withdrawal on demand?</span>
+                <span class="fx-acc-icon">+</span>
+              </div>
+              <div class="fx-acc-body">
+                Yes! For the first payout, traders can request on-demand withdrawal right as the first live trade is closed. No minimum days required.
+              </div>
+            </div>
+          </div>
+
+          <!-- Coupled Input & Socials -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="color-label">Newsletter Subscription Input</div>
+            <div class="fx-coupled-input">
+              <input type="email" placeholder="Enter your email address" value="trader@fxology.com">
+              <button onclick="showToast('// SUBSCRIPTION CONFIRMED')">Submit</button>
+            </div>
+
+            <div class="color-label" style="margin-top: 10px;">Community &amp; Social Round Buttons</div>
+            <div class="comp-row">
+              <a href="javascript:void(0)" class="social-btn" title="Discord">Dc</a>
+              <a href="javascript:void(0)" class="social-btn" title="Telegram">Tg</a>
+              <a href="javascript:void(0)" class="social-btn" title="X / Twitter">𝕏</a>
+              <a href="javascript:void(0)" class="social-btn" title="Instagram">Ig</a>
+              <a href="javascript:void(0)" class="social-btn" title="TikTok">Tk</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════
+       TK — FULL DESIGN TOKENS
+       ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tokens">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">TK</span>
+        <h2 class="section-title">Complete Design Tokens (CSS)</h2>
+        <span class="section-desc">// Pronto para copiar e colar</span>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">CSS Variables — All Tokens</span>
+          <button class="copy-btn" onclick="copyBlock(this)">COPY ALL TOKENS</button>
+        </div>
+        <pre><span class="c">/**
+ * FXOLOGY DESIGN SYSTEM — CORE TOKENS
+ * Theme: Dark Luxury Fintech &amp; Prop Firm
+ * Font: Plus Jakarta Sans
+ */</span>
+
+@import url(<span class="s">'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap'</span>);
+
+:root {
+  <span class="c">/* ── BASE &amp; SURFACES ──────────────────────────────── */</span>
+  <span class="k">--fx-bg-canvas</span>:        <span class="v">#050C06</span>;
+  <span class="k">--fx-bg-page</span>:          <span class="v">#0E0F11</span>;
+  <span class="k">--fx-bg-card</span>:          <span class="v">#141518</span>;
+  <span class="k">--fx-bg-card-hover</span>:    <span class="v">#181A1D</span>;
+  <span class="k">--fx-bg-elevated</span>:      <span class="v">#1C1E22</span>;
+  <span class="k">--fx-bg-input</span>:         <span class="v">#121316</span>;
+  <span class="k">--fx-bg-pill</span>:          <span class="v">#1A1C20</span>;
+  <span class="k">--fx-bg-active</span>:        <span class="v">#25272B</span>;
+
+  <span class="c">/* ── BORDERS ──────────────────────────────────────── */</span>
+  <span class="k">--fx-border-subtle</span>:    <span class="v">rgba(255, 255, 255, 0.06)</span>;
+  <span class="k">--fx-border-medium</span>:    <span class="v">rgba(255, 255, 255, 0.10)</span>;
+  <span class="k">--fx-border-strong</span>:    <span class="v">rgba(255, 255, 255, 0.18)</span>;
+  <span class="k">--fx-border-accent</span>:    <span class="v">rgba(85, 230, 126, 0.35)</span>;
+
+  <span class="c">/* ── TEXT &amp; FOREGROUND ────────────────────────────── */</span>
+  <span class="k">--fx-text-primary</span>:     <span class="v">#FFFFFF</span>;
+  <span class="k">--fx-text-secondary</span>:   <span class="v">#8E9299</span>;
+  <span class="k">--fx-text-muted</span>:       <span class="v">#9CA3AF</span>;
+  <span class="k">--fx-text-tertiary</span>:    <span class="v">#60646C</span>;
+
+  <span class="c">/* ── NEON MINT ACCENT ─────────────────────────────── */</span>
+  <span class="k">--fx-accent</span>:           <span class="v">#55E67E</span>;
+  <span class="k">--fx-accent-light</span>:     <span class="v">#86EFAC</span>;
+  <span class="k">--fx-accent-glow</span>:      <span class="v">#22C55E</span>;
+  <span class="k">--fx-accent-mint</span>:      <span class="v">#B8F5CE</span>;
+
+  <span class="c">/* ── ELEMENTAL METALS ─────────────────────────────── */</span>
+  <span class="k">--fx-metal-cu</span>:         <span class="v">#C4754B</span>; <span class="c">/* Copper */</span>
+  <span class="k">--fx-metal-ag</span>:         <span class="v">#CBD5E1</span>; <span class="c">/* Silver */</span>
+  <span class="k">--fx-metal-au</span>:         <span class="v">#DFC066</span>; <span class="c">/* Gold */</span>
+  <span class="k">--fx-metal-pt</span>:         <span class="v">#B4BCC8</span>; <span class="c">/* Platinum */</span>
+  <span class="k">--fx-metal-rh</span>:         <span class="v">#E4E4E7</span>; <span class="c">/* Rhodium */</span>
+
+  <span class="c">/* ── TYPOGRAPHY ───────────────────────────────────── */</span>
+  <span class="k">--font-sans</span>:           <span class="s">'Plus Jakarta Sans'</span>, -apple-system, sans-serif;
+  <span class="k">--font-mono</span>:           <span class="s">'JetBrains Mono'</span>, monospace;
+
+  <span class="c">/* ── SPACING (base 4px) ───────────────────────────── */</span>
+  <span class="k">--fx-space-1</span>:  <span class="v">4px</span>;   <span class="k">--fx-space-2</span>:  <span class="v">8px</span>;   <span class="k">--fx-space-3</span>:  <span class="v">12px</span>;
+  <span class="k">--fx-space-4</span>:  <span class="v">16px</span>;  <span class="k">--fx-space-5</span>:  <span class="v">20px</span>;  <span class="k">--fx-space-6</span>:  <span class="v">24px</span>;
+  <span class="k">--fx-space-8</span>:  <span class="v">32px</span>;  <span class="k">--fx-space-12</span>: <span class="v">48px</span>;  <span class="k">--fx-space-16</span>: <span class="v">64px</span>;
+
+  <span class="c">/* ── BORDER RADIUS ────────────────────────────────── */</span>
+  <span class="k">--fx-radius-xs</span>:        <span class="v">6px</span>;
+  <span class="k">--fx-radius-sm</span>:        <span class="v">8px</span>;
+  <span class="k">--fx-radius-btn</span>:       <span class="v">10px</span>;
+  <span class="k">--fx-radius-card</span>:      <span class="v">14px</span>;
+  <span class="k">--fx-radius-banner</span>:    <span class="v">18px</span>;
+  <span class="k">--fx-radius-pill</span>:      <span class="v">9999px</span>;
+
+  <span class="c">/* ── GLOWS &amp; SHADOWS ──────────────────────────────── */</span>
+  <span class="k">--fx-glow-accent</span>:      <span class="v">0 0 24px rgba(85, 230, 126, 0.22)</span>;
+  <span class="k">--fx-shadow-card</span>:      <span class="v">0 16px 40px rgba(0, 0, 0, 0.70)</span>;
+}</pre>
+      </div>
+
+      <!-- Quick Start -->
+      <div class="qs-grid">
+        <div class="qs-card">
+          <div class="qs-num">01</div>
+          <div class="qs-title">Import Font</div>
+          <div class="qs-desc">Carregue <code>Plus Jakarta Sans</code> com pesos 300 a 800 do Google Fonts para manter o tracking condensado autêntico.</div>
+        </div>
+        <div class="qs-card">
+          <div class="qs-num">02</div>
+          <div class="qs-title">Paste Tokens</div>
+          <div class="qs-desc">Insira as variáveis CSS acima no cabeçalho do seu CSS global para ter todas as cores e espaçamentos instantâneos.</div>
+        </div>
+        <div class="qs-card">
+          <div class="qs-num">03</div>
+          <div class="qs-title">Primary CTA Style</div>
+          <div class="qs-desc">Crie os botões com fundo branco <code>#FFFFFF</code> e a caixinha de ícone à direita com <code>--fx-accent</code> (#55E67E).</div>
+        </div>
+        <div class="qs-card">
+          <div class="qs-num">04</div>
+          <div class="qs-title">Gradient Headings</div>
+          <div class="qs-desc">Use <code>linear-gradient(180deg, #FFFFFF, #B8F5CE)</code> com <code>background-clip: text</code> em títulos H1 e seções principais.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Toast notification popup -->
+<div class="toast" id="toast">// COPIED</div>
+
+<script>
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => {
+      t.classList.remove('show');
+    }, 2000);
+  }
+
+  function copyHex(val) {
+    navigator.clipboard.writeText(val).then(() => {
+      showToast('// ' + val + ' COPIED');
+    });
+  }
+
+  function copyBlock(btn) {
+    const pre = btn.closest('.code-wrap').querySelector('pre');
+    navigator.clipboard.writeText(pre.textContent).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ COPIED';
+      showToast('// CODE TOKENS COPIED');
+      setTimeout(() => {
+        btn.textContent = orig;
+      }, 2000);
+    });
+  }
+
+  function scrollToId(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function switchTab(btn) {
+    const tabs = document.querySelectorAll('#metalsTabs .segment-btn');
+    tabs.forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    showToast('// PLAN: ' + btn.textContent.toUpperCase());
+  }
+
+  function toggleAcc(item) {
+    const isOpen = item.classList.contains('open');
+    const icon = item.querySelector('.fx-acc-icon');
+    if (isOpen) {
+      item.classList.remove('open');
+      icon.textContent = '+';
+    } else {
+      item.classList.add('open');
+      icon.textContent = '−';
+    }
+  }
+
+  // Highlight active sidebar icon on scroll
+  const sections = document.querySelectorAll('.section[id]');
+  const sidebarLinks = document.querySelectorAll('.sidebar-num');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sidebarLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`.sidebar-num[href="#${entry.target.id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { threshold: 0.35 });
+
+  sections.forEach(sec => observer.observe(sec));
+</script>
+</body>
+</html>

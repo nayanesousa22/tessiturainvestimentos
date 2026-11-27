@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# [PREENCHER: após definir o domínio, incluir a linha abaixo]
+# Sitemap: https://[PREENCHER: domínio]/sitemap.xml
