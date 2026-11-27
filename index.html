@@ -111,7 +111,14 @@
       --header-h: 56px;
     }
 
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+      overflow-x: clip;
+      width: 100%;
+      max-width: 100%;
+    }
 
     body {
       font-family: var(--font-body);
@@ -120,7 +127,16 @@
       font-size: 14px;
       line-height: 1.6;
       overflow-x: hidden;
+      overflow-x: clip;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
       -webkit-font-smoothing: antialiased;
+    }
+
+    main, .fold, .hero, .footer {
+      overflow-x: clip;
+      max-width: 100%;
     }
 
     a { color: inherit; }
@@ -132,6 +148,7 @@
       max-width: var(--container);
       margin: 0 auto;
       padding: 0 24px;
+      box-sizing: border-box;
     }
 
     :focus-visible {
@@ -146,6 +163,8 @@
     .topnav {
       position: fixed;
       top: 0; left: 0; right: 0;
+      width: 100%;
+      max-width: 100vw;
       height: var(--header-h);
       background: rgba(14, 15, 17, 0.85);
       border-bottom: 1px solid var(--fx-border-subtle);
@@ -154,6 +173,7 @@
       display: flex;
       align-items: center;
       z-index: 99;
+      box-sizing: border-box;
     }
 
     .topnav .container {
@@ -161,6 +181,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      width: 100%;
+      max-width: var(--container);
+      box-sizing: border-box;
     }
 
     .topnav-logo {
@@ -320,7 +343,7 @@
       position: relative;
       padding: 92px 0;
       border-bottom: none;
-      overflow: visible;
+      overflow-x: clip;
     }
 
     .grid-pattern {
@@ -1421,6 +1444,36 @@
        RESPONSIVO (mobile primeiro & ajustes exclusivos mobile)
        ═════════════════════════════════════════════════════════ */
     @media (max-width: 767px) {
+      body, html {
+        overflow-x: hidden !important;
+        overflow-x: clip !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .fold, .hero, .footer, main {
+        overflow-x: clip !important;
+        max-width: 100% !important;
+      }
+
+      /* Reduz e posiciona os glows no mobile para caberem 100% na tela sem transbordar */
+      .glow-back {
+        width: 320px !important;
+        height: 320px !important;
+        max-width: 85vw !important;
+        max-height: 85vw !important;
+        filter: blur(16px) !important;
+      }
+
+      .problem .glow-back-top { top: -80px; left: 0; right: auto; }
+      .problem .glow-back-bottom { bottom: -80px; right: 0; left: auto; }
+      .method .glow-back-bottom { bottom: -80px; left: 0; }
+      .steps .glow-back-bottom { bottom: -80px; right: 0; }
+      .audience .glow-back-bottom { bottom: -80px; right: 0; }
+      .faq .glow-back-top { top: -80px; left: 0; }
+      .faq .glow-back-bottom { bottom: -80px; right: 0; }
+      .cta-final .glow-back-top { top: -80px; left: 0; }
+
       .br-desktop { display: none !important; }
       .br-mobile  { display: inline !important; }
 
@@ -1604,9 +1657,54 @@
     }
 
     @media (max-width: 639px) {
-      .topnav .container { padding: 0 16px; }
-      .topnav-logo { font-size: 15px; gap: 6px; }
-      .status-online-pill { padding: 4px 10px; font-size: 11px; gap: 6px; }
+      .topnav {
+        height: 52px;
+      }
+      .topnav .container {
+        padding: 0 16px;
+        gap: 8px;
+        justify-content: space-between;
+      }
+      .topnav-logo {
+        font-size: 14px;
+        gap: 6px;
+        flex-shrink: 1;
+        min-width: 0;
+      }
+      .fx-logo-box {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+        border-radius: 6px;
+        flex-shrink: 0;
+      }
+      .status-online-pill {
+        padding: 4px 10px;
+        font-size: 11px;
+        gap: 6px;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .status-online-pill .dot-pulse {
+        width: 6px;
+        height: 6px;
+      }
+    }
+
+    @media (max-width: 374px) {
+      .topnav .container {
+        padding: 0 12px;
+        gap: 6px;
+      }
+      .topnav-logo {
+        font-size: 13px;
+        gap: 5px;
+      }
+      .status-online-pill {
+        padding: 3px 8px;
+        font-size: 10.5px;
+        gap: 5px;
+      }
     }
 
     @media (min-width: 640px) {
